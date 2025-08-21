@@ -1,6 +1,5 @@
-
 "use client";
-import { DayIcon, NightIcon } from "./icons"; 
+import { DayIcon, NightIcon } from "./icons";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -17,11 +16,11 @@ export default function ThemeToggle() {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="cursor-pointer"
     >
-    {theme === "dark" ? (
-          <DayIcon className="stroke-white" />
-        ) : (
-          <NightIcon className="stroke-black" />
-        )}
+      {theme === "dark" ? (
+        <DayIcon className="stroke-white" />
+      ) : (
+        <NightIcon className="stroke-black" />
+      )}
     </button>
   );
 }
