@@ -12,7 +12,6 @@ const Header = () => {
           </div>
           <div className="flex items-center gap-[0_20px]">
             <ThemeToggle />
-
             <button className="flex items-center gap-[10px] cursor-pointer text-black dark:text-white">
               start a project{" "}
               <ArrowIcon className="fill-black dark:fill-white" />

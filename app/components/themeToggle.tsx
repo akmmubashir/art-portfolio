@@ -17,9 +17,9 @@ const ThemeToggle = () => {
         className="cursor-pointer"
       >
         {theme === "dark" ? (
-          <NightIcon className="stroke-black dark:stroke-white" />
+          <DayIcon className="stroke-white" />
         ) : (
-          <DayIcon className="stroke-black dark:stroke-white" />
+          <NightIcon className="stroke-black" />
         )}
       </button>
     </React.Fragment>
