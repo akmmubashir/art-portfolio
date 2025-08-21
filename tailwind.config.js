@@ -1,19 +1,19 @@
+// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
+  darkMode: "class",
   content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        bgDark: '#0a0a0a',
-        bgLight: '#ffffff',
-        textDark: '#ededed',
-        textLight: '#171717',
+        "primary-color": "#ffffff", 
+        "secondary-color": "#000000", 
+        "tertiary-color": "#d5d5d5", 
       },
     },
   },
   plugins: [],
-}
+};

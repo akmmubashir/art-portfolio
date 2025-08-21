@@ -65,7 +65,7 @@ const InteractiveImage: React.FC = () => {
               animate="visible"
               className="flex"
             >
-              <motion.h1 className="text-[250px] max-md:text-[70px] font-semibold">
+              <motion.h1 className="text-[250px] max-md:text-[70px] font-semibold text-black dark:text-white">
                 Portfolio
               </motion.h1>
             </motion.div>
@@ -76,7 +76,7 @@ const InteractiveImage: React.FC = () => {
                 duration: 4,
                 ease: "easeOut",
               }}
-              className="absolute left-[180px] top-[240px] max-md:top-[64px] pe-[40px] bg-white dark:bg-gray-800 text-[100px] font-semibold text-black dark:text-white leading-[120px]"
+              className="absolute z-20 left-[140px] top-[240px] max-md:top-[64px] pe-[100px] bg-white dark:bg-gray-800 text-[100px] font-semibold text-black dark:text-white leading-[120px]"
             >
               architecture
             </motion.h2>
@@ -89,7 +89,7 @@ const InteractiveImage: React.FC = () => {
                 animate={{ x: [-100, 0] }}
                 transition={{ duration: 0.5 }}
                 whileHover={{ scale: 1.1 }}
-                className="text-[26px] max-md:text-[18px] uppercase font-medium text-gray-800 dark:text-white hover:underline underline-offset-4"
+                className="text-[26px] max-md:text-[18px] uppercase font-medium text-black dark:text-white hover:underline underline-offset-4"
               >
                 {item}
               </motion.a>

@@ -5,7 +5,7 @@ import InteractiveImage from "../components/interactiveImage";
 
 const HomePage = () => {
   return (
-    <div className="h-screen p-[50px] bg-white dark:bg-gray-800 text-black dark:text-white flex flex-col overflow-hidden">
+    <div className="h-screen p-[50px] bg-white dark:bg-gray-800 flex flex-col overflow-hidden">
       <Header />
       <InteractiveImage />
       <Footer />

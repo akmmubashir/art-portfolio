@@ -1,29 +1,27 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { DayIcon, NightIcon } from "./icons";
-import { useTheme } from "next-themes";
 
-const ThemeToggle = () => {
+"use client";
+import { DayIcon, NightIcon } from "./icons"; 
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+
+export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
 
+  // Avoid hydration mismatch
+  useEffect(() => setMounted(true), []);
   if (!mounted) return null;
-  console.log("theme", theme);
+
   return (
-    <React.Fragment>
-      <button
-        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="cursor-pointer"
-      >
-        {theme === "dark" ? (
+    <button
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      className="cursor-pointer"
+    >
+    {theme === "dark" ? (
           <DayIcon className="stroke-white" />
         ) : (
           <NightIcon className="stroke-black" />
         )}
-      </button>
-    </React.Fragment>
+    </button>
   );
-};
-
-export default ThemeToggle;
+}
