@@ -86,7 +86,7 @@ const InteractiveImage: React.FC = () => {
                 duration: 4,
                 ease: "easeOut",
               }}
-              className="absolute z-20 left-[150px] max-md:left-[40px] top-[240px] max-md:top-[56px] pe-[100px] max-md:pe-0 bg-white dark:bg-gray-800 text-[100px] max-md:text-[40px] font-bold leading-[110px] max-md:leading-[40px] stroke-text"
+              className="absolute z-20 left-[150px] max-md:left-[40px] top-[240px] max-md:top-[54px] md:pe-[100px] bg-white dark:bg-gray-800 text-[100px] max-md:text-[40px] font-bold leading-[110px] max-md:leading-[40px] stroke-text"
               style={{ fontFamily: GilroyBold.style.fontFamily }}
             >
               architecture
@@ -111,7 +111,7 @@ const InteractiveImage: React.FC = () => {
           <div className="w-full h-full relative">
             <Image
               src="/assets/common/heroImage.png"
-              className="w-full h-full md:object-contain max-md:object-cover absolute bottom-[-40px] max-md:bottom-[70px] right-[-160px] max-md:right-0"
+              className="w-full h-full md:object-contain max-md:object-cover absolute bottom-[-40px] max-md:bottom-[100px] right-[-160px] max-md:right-[0]"
               alt="heroImage"
               width={2000}
               height={2000}

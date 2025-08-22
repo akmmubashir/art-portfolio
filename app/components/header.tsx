@@ -7,7 +7,7 @@ const Header = () => {
     <div className="bg-bgLight dark:bg-bgDark sticky top-0 z-50 w-full">
       <div className="">
         <div className="flex justify-between items-center">
-          <div className="max-md:w-[80px]">
+          <div className="w-[120px] max-md:w-[80px]">
             <Logo className="fill-black dark:fill-white" />
           </div>
           <div className="flex items-center gap-[0_20px]">
