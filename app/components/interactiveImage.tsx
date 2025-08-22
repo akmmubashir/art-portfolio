@@ -86,7 +86,7 @@ const InteractiveImage: React.FC = () => {
                 duration: 4,
                 ease: "easeOut",
               }}
-              className="absolute z-20 left-[150px] max-md:left-[40px] top-[240px] max-md:top-[54px] md:pe-[100px] bg-white dark:bg-gray-800 text-[100px] max-md:text-[40px] font-bold leading-[110px] max-md:leading-[40px] stroke-text"
+              className="absolute z-20 left-[150px] max-md:left-[40px] top-[240px] max-md:top-[54px] p-[0_100px_0_0] max-md:p-0 bg-white dark:bg-gray-800 text-[100px] max-md:text-[40px] font-bold leading-[110px] max-md:leading-[40px] stroke-text"
               style={{ fontFamily: GilroyBold.style.fontFamily }}
             >
               architecture
