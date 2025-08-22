@@ -1,2 +1,11 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
+
+.stroke-text {
+  color: transparent;
+  -webkit-text-stroke: 1px black;
+}
+.dark .stroke-text {
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+}

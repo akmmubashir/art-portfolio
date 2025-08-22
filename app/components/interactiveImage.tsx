@@ -2,6 +2,13 @@
 import Image from "next/image";
 import React, { useRef } from "react";
 import { motion } from "motion/react";
+import localFont from "next/font/local";
+import Navigation from "./navigation";
+
+const GilroyBold = localFont({
+  src: "../fonts/Gilroy-Bold.ttf",
+  variable: "--font-gilroy-bold",
+});
 
 const InteractiveImage: React.FC = () => {
   const imageRef = useRef<HTMLDivElement>(null);
@@ -50,7 +57,7 @@ const InteractiveImage: React.FC = () => {
   return (
     <React.Fragment>
       <div
-        className="grid grid-cols-12 flex-1"
+        className="grid grid-cols-12 flex-1 overflow-hidden"
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
@@ -65,7 +72,10 @@ const InteractiveImage: React.FC = () => {
               animate="visible"
               className="flex"
             >
-              <motion.h1 className="text-[250px] max-md:text-[70px] font-semibold text-black dark:text-white">
+              <motion.h1
+                className="text-[250px] max-md:text-[60px] font-bold text-black dark:text-white tracking-[10px]"
+                style={{ fontFamily: GilroyBold.style.fontFamily }}
+              >
                 Portfolio
               </motion.h1>
             </motion.div>
@@ -76,25 +86,18 @@ const InteractiveImage: React.FC = () => {
                 duration: 4,
                 ease: "easeOut",
               }}
-              className="absolute z-20 left-[140px] top-[240px] max-md:top-[64px] pe-[100px] bg-white dark:bg-gray-800 text-[100px] font-semibold text-black dark:text-white leading-[120px]"
+              className="absolute z-20 left-[150px] max-md:left-[40px] top-[240px] max-md:top-[56px] pe-[100px] max-md:pe-0 bg-white dark:bg-gray-800 text-[100px] max-md:text-[40px] font-bold leading-[110px] max-md:leading-[40px] stroke-text"
+              style={{ fontFamily: GilroyBold.style.fontFamily }}
             >
               architecture
             </motion.h2>
           </div>
-          <div className="absolute z-30 bottom-[180px] max-md:bottom-[180px] flex max-md:flex-col gap-[30px] max-md:gap-[10px] ">
-            {["home", "cv", "works", "contact"].map((item, index) => (
-              <motion.a
-                key={index}
-                href={`/${item}`}
-                animate={{ x: [-100, 0] }}
-                transition={{ duration: 0.5 }}
-                whileHover={{ scale: 1.1 }}
-                className="text-[26px] max-md:text-[18px] uppercase font-medium text-black dark:text-white hover:underline underline-offset-4"
-              >
-                {item}
-              </motion.a>
-            ))}
+          <div className="absolute z-30 bottom-[200px] max-md:hidden">
+            <Navigation home />
           </div>
+          {/* <div className="md:hidden">
+            <Navigation home />
+          </div> */}
         </div>
         <motion.div
           initial={{ opacity: 0, x: 100 }}
