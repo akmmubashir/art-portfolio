@@ -13,9 +13,9 @@ const GilroyBold = localFont({
 
 const page = () => {
   return (
-    <div className="md:h-screen p-[50px] max-md:p-[20px_20px_100px_20px] bg-white dark:bg-gray-800 flex flex-col md:overflow-hidden">
+    <div className="md:h-screen  bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
       <Header />
-      <div className="flex-1 flex flex-col p-[100px_0_30px_0] max-md:p-[40px_0_40px_0]">
+      <div className="flex-1 flex flex-col p-[100px_50px_30px_50px] max-md:p-[20px_20px_50px_20px]">
         <div className="grid grid-cols-12 gap-[100px] max-md:gap-[20px_0]">
           <div className="col-span-3 max-md:col-span-full">
             <Image
@@ -26,9 +26,9 @@ const page = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="col-span-9 max-md:col-span-full flex flex-col gap-[40px] max-md:gap-[20px_0]">
+          <div className="col-span-9 max-md:col-span-full flex flex-col gap-[40px] max-md:gap-[10px_0]">
             <h1
-              className="font-Gilroy font-bold text-[60px] max-md:text-[36px] leading-[60px] max-md:leading-[36px]"
+              className="font-Gilroy font-bold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
               style={{ fontFamily: GilroyBold.style.fontFamily }}
             >
               Lorem Ipsum

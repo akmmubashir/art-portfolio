@@ -78,7 +78,7 @@ const Navigation = (props: Props) => {
                   animate={{ y: [100, 0] }}
                   transition={{ duration: 1 }}
                   whileHover={{ scale: 1.1 }}
-                  className="text-[22px] max-md:text-[18px] font-medium text-black dark:text-white hover:underline underline-offset-4 lowercase"
+                  className="text-[22px] max-md:text-[18px] font-medium text-black dark:text-white hover:underline underline-offset-4 capitalize"
                 >
                   {item.name}
                 </motion.a>
@@ -86,7 +86,7 @@ const Navigation = (props: Props) => {
             ) : (
               <Link
                 href={`${item.href}`}
-                className={`text-[22px] max-md:text-[18px] font-medium underline-offset-4 lowercase p-[4px_14px] rounded-full ${
+                className={`text-[22px] max-md:text-[18px] font-medium underline-offset-4 capitalize p-[4px_14px] rounded-full ${
                   pathname === item.href
                     ? "text-black dark:text-white bg-white dark:bg-black"
                     : "text-white dark:text-black hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white"
@@ -98,23 +98,40 @@ const Navigation = (props: Props) => {
           </React.Fragment>
         ))}
       </div>
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 p-[20px] overflow-hidden">
-        <div className="flex items-center justify-between gap-[20px] bg-black dark:bg-white p-[6px_12px] rounded-full">
+      {props.home ? (
+        <div className="flex flex-col gap-[10px] md:hidden">
           {menuItems.map((item, index) => (
-            <Link
+            <motion.a
               key={index}
               href={`${item.href}`}
-              className={`aspect-square flex items-center justify-center font-medium lowercase p-[8px] rounded-full ${
-                pathname === item.href
-                  ? "text-black dark:text-white border-2 border-white dark:border-black"
-                  : "text-white dark:text-black hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white"
-              }`}
+              animate={{ x: [-100, 0] }}
+              transition={{ duration: 1 }}
+              whileHover={{ scale: 1.1 }}
+              className="text-[22px] max-md:text-[18px] font-medium text-black dark:text-white hover:underline underline-offset-4 capitalize"
             >
-              {item.icon}
-            </Link>
+              {pathname === item.href ? null : item.name}
+            </motion.a>
           ))}
         </div>
-      </div>
+      ) : (
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 p-[20px] overflow-hidden">
+          <div className="flex items-center justify-between gap-[20px] bg-black dark:bg-white p-[6px_12px] rounded-full">
+            {menuItems.map((item, index) => (
+              <Link
+                key={index}
+                href={`${item.href}`}
+                className={`aspect-square flex items-center justify-center font-medium capitalize p-[8px] rounded-full ${
+                  pathname === item.href
+                    ? "text-black dark:text-white border-2 border-white dark:border-black"
+                    : "text-white dark:text-black hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white"
+                }`}
+              >
+                {item.icon}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </React.Fragment>
   );
 };

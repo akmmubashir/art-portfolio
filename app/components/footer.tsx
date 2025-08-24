@@ -1,14 +1,26 @@
 import React from "react";
 
-// type Props = {}
+type Props = {
+  home?: boolean;
+};
 
-const Footer = () => {
+const Footer = (props: Props) => {
   return (
-    <div className="w-full mt-auto">
-      <p className="text-start text-textDark dark:text-textLight">
-        © 2025 by P U. All rights reserved.
-      </p>
-    </div>
+    <React.Fragment>
+      {props.home ? (
+        <div className="w-full mt-auto p-[0px_50px_50px] max-md:p-[20px]">
+          <p className="text-start max-md:text-center text-black dark:text-white text-[16px] max-md:text-[14px]">
+            © {new Date().getFullYear()} by P U. All rights reserved.
+          </p>
+        </div>
+      ) : (
+        <div className="w-full mt-auto p-[20px] max-md:p-[10px] border-t border-black dark:border-white">
+          <p className="text-center text-black dark:text-white text-[16px] max-md:text-[14px]">
+            © 2025 by P U. All rights reserved.
+          </p>
+        </div>
+      )}
+    </React.Fragment>
   );
 };
 
