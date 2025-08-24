@@ -21,7 +21,7 @@ const Navigation = (props: Props) => {
       href: "/",
       icon: (
         <HomeIcon
-          className={`stroke-black dark:stroke-white max-md:stroke-white max-md:dark:stroke-black`}
+          className={`stroke-black dark:stroke-white max-md:stroke-black max-md:dark:stroke-white`}
         />
       ),
     },
@@ -30,7 +30,7 @@ const Navigation = (props: Props) => {
       name: "About",
       href: "/about",
       icon: (
-        <AboutIcon className="stroke-black dark:stroke-white max-md:stroke-white max-md:dark:stroke-black" />
+        <AboutIcon className="stroke-black dark:stroke-white max-md:stroke-black max-md:dark:stroke-white" />
       ),
     },
     {
@@ -38,7 +38,7 @@ const Navigation = (props: Props) => {
       name: "Projects",
       href: "/projects",
       icon: (
-        <ProjectsIcon className="stroke-black dark:stroke-white max-md:stroke-white max-md:dark:stroke-black" />
+        <ProjectsIcon className="stroke-black dark:stroke-white max-md:stroke-black max-md:dark:stroke-white" />
       ),
     },
     {
@@ -46,7 +46,7 @@ const Navigation = (props: Props) => {
       name: "Contact",
       href: "/contact",
       icon: (
-        <ContactIcon className="stroke-black dark:stroke-white max-md:stroke-white max-md:dark:stroke-black" />
+        <ContactIcon className="stroke-black dark:stroke-white max-md:stroke-black max-md:dark:stroke-white" />
       ),
     },
   ];
@@ -115,14 +115,17 @@ const Navigation = (props: Props) => {
         </div>
       ) : (
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 p-[20px] overflow-hidden">
-          <div className="flex items-center justify-between gap-[20px] bg-black dark:bg-white p-[6px_12px] rounded-full">
+          <div
+            className="flex items-center justify-between gap-[20px] bg-white/10 dark:bg-gray-900/30 
+    backdrop-blur-[3px] border-b border-white/20 dark:border-gray-900/20 p-[6px_12px] rounded-full shadow-lg"
+          >
             {menuItems.map((item, index) => (
               <Link
                 key={index}
                 href={`${item.href}`}
                 className={`aspect-square flex items-center justify-center font-medium capitalize p-[8px] rounded-full ${
                   pathname === item.href
-                    ? "text-black dark:text-white border-2 border-white dark:border-black"
+                    ? "text-white dark:text-black border-2 border-black dark:border-white"
                     : "text-white dark:text-black hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white"
                 }`}
               >
