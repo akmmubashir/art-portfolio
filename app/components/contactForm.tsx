@@ -52,7 +52,7 @@ const ContactForm = () => {
         <input
           type="text"
           placeholder="Name"
-          className="bg-[#F7F7F7] text-[#5D5D5D] p-[20px_30px] max-md:p-[15px_15px] w-full text-[16px] max-md:text-[14px] font-medium focus:outline-none"
+          className="bg-[#F7F7F7] text-[#5D5D5D] p-[20px_30px] max-md:p-[15px_15px] w-full placeholder:text-[18px] max-md:placeholder:text-[16px] text-[20px] max-md:text-[16px] font-medium focus:outline-none"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -66,7 +66,7 @@ const ContactForm = () => {
         <input
           type="text"
           placeholder="E-Mail"
-          className="bg-[#F7F7F7] text-[#5D5D5D] p-[20px_30px] max-md:p-[15px_15px] w-full text-[16px] max-md:text-[14px] font-medium focus:outline-none"
+          className="bg-[#F7F7F7] text-[#5D5D5D] p-[20px_30px] max-md:p-[15px_15px] w-full placeholder:text-[18px] max-md:placeholder:text-[16px] text-[20px] max-md:text-[16px] font-medium focus:outline-none"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -79,7 +79,7 @@ const ContactForm = () => {
         <textarea
           placeholder="Type your message here"
           rows={5}
-          className="bg-[#F7F7F7] text-[#5D5D5D] p-[20px_30px] max-md:p-[15px_15px] w-full text-[16px] max-md:text-[14px] font-medium focus:outline-none"
+          className="bg-[#F7F7F7] text-[#5D5D5D] p-[20px_30px] max-md:p-[15px_15px] w-full placeholder:text-[18px] max-md:placeholder:text-[16px] text-[20px] max-md:text-[16px] font-medium focus:outline-none"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
@@ -90,7 +90,7 @@ const ContactForm = () => {
 
       <button
         type="submit"
-        className="w-fit mt-[20px] max-md:mt-[10px] text-[18px] max-md:text-[16px] cursor-pointer p-[10px_40px] max-md:p-[10px_30px] bg-black dark:bg-white hover:bg-[#353535] dark:hover:bg-black text-white dark:text-black hover:text-white dark:hover:text-white"
+        className="font-medium w-fit mt-[20px] max-md:mt-[10px] text-[18px] max-md:text-[16px] cursor-pointer p-[10px_40px] max-md:p-[10px_30px] bg-black dark:bg-white hover:bg-[#353535] dark:hover:bg-black text-white dark:text-black hover:text-white dark:hover:text-white"
       >
         Submit
       </button>
