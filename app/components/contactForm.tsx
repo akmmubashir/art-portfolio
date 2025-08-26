@@ -15,7 +15,7 @@ const ContactForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    let formErrors = { name: "", email: "", message: "" };
+    const formErrors = { name: "", email: "", message: "" };
     let hasError = false;
 
     if (!name.trim()) {

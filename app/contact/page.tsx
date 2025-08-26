@@ -80,7 +80,7 @@ const page = () => {
               className="font-Gilroy font-extrabold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
               style={{ fontFamily: GilroyBold.style.fontFamily }}
             >
-              Let's work
+              Let&apos;s work
               <br />
               together
             </h1>
