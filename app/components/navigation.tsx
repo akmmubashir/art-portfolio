@@ -56,7 +56,7 @@ const Navigation = (props: Props) => {
       <div
         className={`flex items-center max-md:hidden ${
           !props.home
-            ? "bg-black dark:bg-white p-[4px_12px] rounded-full gap-[20px]"
+            ? "bg-black dark:bg-white p-[4px_20px] rounded-full gap-[10px]"
             : "gap-[40px] max-md:gap-[10px] "
         }`}
       >
@@ -78,7 +78,7 @@ const Navigation = (props: Props) => {
                   animate={{ y: [100, 0] }}
                   transition={{ duration: 1 }}
                   whileHover={{ scale: 1.1 }}
-                  className="text-[22px] max-md:text-[18px] font-medium text-black dark:text-white hover:underline underline-offset-4 capitalize"
+                  className="text-[22px] max-md:text-[18px] font-medium text-black dark:text-white hover:underline underline-offset-4 lowercase"
                 >
                   {item.name}
                 </motion.a>
@@ -86,7 +86,7 @@ const Navigation = (props: Props) => {
             ) : (
               <Link
                 href={`${item.href}`}
-                className={`text-[22px] max-md:text-[18px] font-medium underline-offset-4 capitalize p-[4px_14px] rounded-full ${
+                className={`text-[22px] max-md:text-[18px] font-medium underline-offset-4 lowercase p-[4px_14px] rounded-full ${
                   pathname === item.href
                     ? "text-black dark:text-white bg-white dark:bg-black"
                     : "text-white dark:text-black hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white"
