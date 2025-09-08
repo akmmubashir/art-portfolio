@@ -8,7 +8,7 @@ type Props = {
 const Footer = async (props: Props) => {
   const generalInfo = await getGeneralInfo();
   const currentYear = new Date().getFullYear();
-  const rightsText = generalInfo?.data?.Rights || "Your Name";
+  const rightsText = generalInfo?.data?.rights || "Your Name";
 
   return (
     <React.Fragment>
