@@ -10,7 +10,8 @@
     "lint": "next lint",
     "lint:fix": "eslint --fix app --ext .tsx",
     "format:check": "prettier --check app",
-    "format:write": "prettier --write app"
+    "format:write": "prettier --write app",
+    "vercel-build": "npm ci && next build"
   },
   "dependencies": {
     "motion": "^12.23.12",
