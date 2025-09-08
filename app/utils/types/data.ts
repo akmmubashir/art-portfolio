@@ -24,3 +24,17 @@ export type HomeData = {
     heroImage?: { url: string };
   };
 };
+
+export type AboutData = {
+  data: {
+    ogTitle: string;
+    ogDescription: string;
+    metaTitle: string;
+    metaDescription: string;
+    heading: string;
+    description: string;
+    ogImage?: { url: string };
+    aboutImage?: { url: string };
+    resume?: { url: string };
+  };
+};

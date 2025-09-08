@@ -1,5 +1,5 @@
 import { getData } from "./getData";
-import { GeneralInfo, HomeData } from "../../types/data";
+import { AboutData, GeneralInfo, HomeData } from "../../types/data";
 
 export async function getGeneralInfo(): Promise<GeneralInfo | undefined> {
   try {
@@ -21,6 +21,17 @@ export async function getHomeData(): Promise<HomeData | undefined> {
     );
   } catch (error) {
     console.error("Failed to fetch home data:", error);
+    // throw notFound();
+  }
+}
+export async function getAboutData(): Promise<AboutData | undefined> {
+  try {
+    return await getData(
+      `/about?populate=*`,
+      60 // Revalidate every 60 seconds
+    );
+  } catch (error) {
+    console.error("Failed to fetch about data:", error);
     // throw notFound();
   }
 }
