@@ -115,7 +115,7 @@ const InteractiveImage: React.FC<Props> = ({
         >
           <div className="w-full h-full relative">
             <Image
-              src={homeData?.heroImage?.url || "/assets/common/aboutImage.png"}
+              src={homeData?.heroImage?.url || "/assets/common/heroImage.png"}
               className="w-full h-full md:object-contain max-md:object-cover absolute z-20 bottom-[-30px] max-md:bottom-[10px] right-[-160px] max-md:right-[0]"
               alt="heroImage"
               width={2000}
