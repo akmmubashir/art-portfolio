@@ -21,12 +21,12 @@ export const getData = async <T = unknown>(
       console.warn("NEXT_PUBLIC_BASE_URL is not set");
     }
 
-    console.debug("API Request:", {
-      url: apiUrl,
-      method: "GET",
-      headers: { ...headers, Authorization: "Bearer [REDACTED]" },
-      revalidate,
-    });
+    // console.debug("API Request:", {
+    //   url: apiUrl,
+    //   method: "GET",
+    //   headers: { ...headers, Authorization: "Bearer [REDACTED]" },
+    //   revalidate,
+    // });
 
     const res = await fetch(apiUrl, {
       method: "GET",

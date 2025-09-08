@@ -1,13 +1,73 @@
-import React from "react";
+import React, { cache } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import InteractiveImage from "../components/interactiveImage";
+import { getHomeData } from "../utils/services/api/getServices";
+import type { Metadata } from "next";
+import { HomeData } from "../utils/types/data";
 
-const HomePage = () => {
+const fetchHomeData = cache(async (): Promise<Partial<HomeData>> => {
+  try {
+    const homeData = await getHomeData();
+    return homeData || {};
+  } catch (error) {
+    console.error("Error fetching home data:", error);
+    return {};
+  }
+});
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  try {
+    const homeData = await fetchHomeData();
+    const defaultImage = "/assets/common/aboutImage.png";
+
+    // Provide default values for all required fields
+    const title = homeData?.data?.metaTitle || "Default Title";
+    const description =
+      homeData?.data?.metaDescription || "Default Description";
+    const ogTitle = homeData?.data?.ogTitle || title;
+    const ogDescription = homeData?.data?.ogDescription || description;
+    const ogImage = defaultImage;
+
+    return {
+      title,
+      description,
+      openGraph: {
+        title: ogTitle,
+        description: ogDescription,
+        locale: "en",
+        images: [
+          {
+            url: ogImage,
+            alt: ogTitle,
+          },
+        ],
+      },
+    };
+  } catch (error) {
+    console.error("Error generating metadata:", error);
+    return {
+      title: "Home",
+      description: "Home Description",
+    };
+  }
+};
+
+const HomePage = async () => {
+  const homeData = await fetchHomeData();
+  const homeDataContent = homeData?.data || {
+    ogTitle: "",
+    ogDescription: "",
+    metaTitle: "",
+    metaDescription: "",
+    heading: "",
+    subHeading: "",
+  };
+
   return (
     <div className="h-screen bg-white dark:bg-[#353535] flex flex-col overflow-hidden">
       <Header />
-      <InteractiveImage />
+      <InteractiveImage homeData={homeDataContent} />
       <Footer home />
     </div>
   );

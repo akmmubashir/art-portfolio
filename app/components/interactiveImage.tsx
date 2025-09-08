@@ -4,13 +4,21 @@ import React, { useRef } from "react";
 import { motion } from "motion/react";
 import localFont from "next/font/local";
 import Navigation from "./navigation";
+import { HomeData } from "@/app/utils/types/data";
 
 const GilroyBold = localFont({
   src: "../fonts/Gilroy-Bold.ttf",
   variable: "--font-gilroy-bold",
 });
 
-const InteractiveImage: React.FC = () => {
+interface Props {
+  homeData: HomeData["data"];
+}
+
+const InteractiveImage: React.FC<Props> = ({
+  homeData = {} as HomeData["data"],
+}) => {
+  // console.log("homeData",homeData);
   const imageRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -76,7 +84,7 @@ const InteractiveImage: React.FC = () => {
                 className="text-[250px] max-md:text-[60px] font-bold text-black dark:text-white tracking-[10px]"
                 style={{ fontFamily: GilroyBold.style.fontFamily }}
               >
-                Portfolio
+                {homeData?.heading}
               </motion.h1>
             </motion.div>
             <motion.h2
@@ -86,10 +94,10 @@ const InteractiveImage: React.FC = () => {
                 duration: 4,
                 ease: "easeOut",
               }}
-              className="absolute z-20 left-[150px] max-md:left-[40px] top-[240px] max-md:top-[54px] p-[0_100px_0_0] max-md:p-0 bg-white dark:bg-[#353535] text-[100px] max-md:text-[40px] font-bold leading-[110px] max-md:leading-[40px] stroke-text"
+              className="absolute z-20 left-[150px] max-md:left-[40px] top-[240px] max-md:top-[54px] p-[0_100px_0_0] max-md:p-0 bg-white dark:bg-[#353535] text-[100px] max-md:text-[40px] font-bold leading-[110px] max-md:leading-[40px] stroke-text lowercase"
               style={{ fontFamily: GilroyBold.style.fontFamily }}
             >
-              architecture
+              {homeData?.subHeading}
             </motion.h2>
           </div>
           <div className="absolute z-30 bottom-[200px] max-md:bottom-[120px]">
