@@ -1,3 +1,11 @@
+export interface Media {
+  id: number;
+  url: string;
+  alternativeText?: string;
+  width?: number;
+  height?: number;
+}
+
 export type GeneralInfo = {
   data: {
     rights: string;
@@ -12,12 +20,7 @@ export type HomeData = {
     metaDescription: string;
     heading: string;
     subHeading: string;
-    ogImage?: {
-      data?: {
-        attributes?: {
-          url: string;
-        };
-      };
-    };
+    ogImage?: { url: string };
+    heroImage?: { url: string };
   };
 };

@@ -18,7 +18,7 @@ interface Props {
 const InteractiveImage: React.FC<Props> = ({
   homeData = {} as HomeData["data"],
 }) => {
-  // console.log("homeData",homeData);
+  console.log("homeData", homeData?.heroImage?.url);
   const imageRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -115,11 +115,12 @@ const InteractiveImage: React.FC<Props> = ({
         >
           <div className="w-full h-full relative">
             <Image
-              src="/assets/common/heroImage.png"
+              src={homeData?.heroImage?.url || "/assets/common/aboutImage.png"}
               className="w-full h-full md:object-contain max-md:object-cover absolute z-20 bottom-[-30px] max-md:bottom-[10px] right-[-160px] max-md:right-[0]"
               alt="heroImage"
               width={2000}
               height={2000}
+              priority
             />
           </div>
         </motion.div>

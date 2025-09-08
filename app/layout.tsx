@@ -19,7 +19,7 @@ const fetchHomeData = cache(async (): Promise<Partial<HomeData>> => {
 export const generateMetadata = async (): Promise<Metadata> => {
   try {
     const homeData = await fetchHomeData();
-    const defaultImage = "/assets/common/aboutImage.png";
+    const defaultImage = "/assets/common/heroImage.png";
 
     // Provide default values for all required fields
     const title = homeData?.data?.metaTitle || "Default Title";
@@ -27,9 +27,12 @@ export const generateMetadata = async (): Promise<Metadata> => {
       homeData?.data?.metaDescription || "Default Description";
     const ogTitle = homeData?.data?.ogTitle || title;
     const ogDescription = homeData?.data?.ogDescription || description;
-    const ogImage = defaultImage;
+    const ogImage = homeData?.data?.ogImage?.url || defaultImage;
 
     return {
+      metadataBase: new URL(
+        process.env.NEXT_PUBLIC_BASE_DOMAIN || "http://localhost:3000"
+      ),
       title,
       description,
       openGraph: {

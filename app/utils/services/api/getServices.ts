@@ -16,7 +16,7 @@ export async function getGeneralInfo(): Promise<GeneralInfo | undefined> {
 export async function getHomeData(): Promise<HomeData | undefined> {
   try {
     return await getData(
-      `/home`,
+      `/home?populate=*`,
       60 // Revalidate every 60 seconds
     );
   } catch (error) {
