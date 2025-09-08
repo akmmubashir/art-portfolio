@@ -4,7 +4,7 @@ interface ApiError extends Error {
   url?: string;
 }
 
-export const getData = async <T = any>(
+export const getData = async <T = unknown>(
   url: string,
   revalidate: number = 60
 ): Promise<T> => {

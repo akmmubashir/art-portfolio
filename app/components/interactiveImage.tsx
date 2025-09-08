@@ -49,10 +49,10 @@ const InteractiveImage: React.FC = () => {
     },
   };
 
-  const child = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0 },
-  };
+  // const child = {
+  //   hidden: { opacity: 0, y: 10 },
+  //   visible: { opacity: 1, y: 0 },
+  // };
 
   return (
     <React.Fragment>
