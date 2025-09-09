@@ -55,14 +55,18 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const HomePage = async () => {
   const homeData = await fetchHomeData();
-  const homeDataContent = homeData?.data || {
+  const defaultData = {
+    pageTitle: "",
     ogTitle: "",
     ogDescription: "",
     metaTitle: "",
     metaDescription: "",
     heading: "",
     subHeading: "",
+    ogImage: { url: "" },
   };
+
+  const homeDataContent = homeData?.data || defaultData;
 
   return (
     <div className="h-screen bg-white dark:bg-[#353535] flex flex-col overflow-hidden">
