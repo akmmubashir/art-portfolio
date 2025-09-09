@@ -37,7 +37,7 @@ const WorksGrid = (props: Props) => {
         >
           <div className="absolute top-[-40px] left-[50%] translate-x-[-50%] translate-y-[-10px] flex flex-col gap-[5px]">
             <motion.h2
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 2,
@@ -48,11 +48,17 @@ const WorksGrid = (props: Props) => {
             >
               {item.title}
             </motion.h2>
-            <h6
+            <motion.h6
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 2,
+                ease: "easeOut",
+              }}
               className={`text-[16px] max-md:text-[14px] text-center uppercase max-md:hidden text-black dark:text-white`}
             >
               My Projects
-            </h6>
+            </motion.h6>
           </div>
           <motion.div
             initial={{ opacity: 0, y: -50 }}
