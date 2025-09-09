@@ -1,4 +1,4 @@
-import React from "react";
+import React, { cache } from "react";
 import localFont from "next/font/local";
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -12,12 +12,64 @@ import {
   //   FacebookIcon,
 } from "../components/icons";
 import Link from "next/link";
+import { ContactData } from "../utils/types/data";
+import { getContactData } from "../utils/services/api/getServices";
+import { Metadata } from "next";
+
 const GilroyBold = localFont({
   src: "../fonts/Gilroy-Bold.ttf",
   variable: "--font-gilroy-bold",
 });
 
-const page = () => {
+const fetchContactData = cache(async (): Promise<Partial<ContactData>> => {
+  try {
+    const contactData = await getContactData();
+    return contactData || {};
+  } catch (error) {
+    console.error("Error fetching contact data:", error);
+    return {};
+  }
+});
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  try {
+    const contactData = await fetchContactData();
+    const defaultImage = "/assets/common/heroImage.png";
+
+    // Provide default values for all required fields
+    const title = contactData?.data?.metaTitle || "Default Title";
+    const description =
+      contactData?.data?.metaDescription || "Default Description";
+    const ogTitle = contactData?.data?.ogTitle || title;
+    const ogDescription = contactData?.data?.ogDescription || description;
+    const ogImage = contactData?.data?.ogImage?.url || defaultImage;
+
+    return {
+      title,
+      description,
+      openGraph: {
+        title: ogTitle,
+        description: ogDescription,
+        locale: "en",
+        images: [
+          {
+            url: ogImage,
+            alt: ogTitle,
+          },
+        ],
+      },
+    };
+  } catch (error) {
+    console.error("Error generating metadata:", error);
+    return {
+      title: "Contact",
+      description: "Contact Description",
+    };
+  }
+};
+
+const page = async () => {
+  const contactData = await fetchContactData();
   const socialData = [
     {
       id: 1,
@@ -80,13 +132,10 @@ const page = () => {
               className="font-Gilroy font-extrabold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
               style={{ fontFamily: GilroyBold.style.fontFamily }}
             >
-              Let&apos;s work
-              <br />
-              together
+              {contactData?.data?.heading || "Default Heading"}
             </h1>
             <p className="text-[#52575E] dark:text-white text-[20px] max-md:text-[14px] text-justify">
-              t is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
+              {contactData?.data?.description || "Default Description"}
             </p>
             <div className="flex gap-[20px]">
               {socialData.map((item, index) => (

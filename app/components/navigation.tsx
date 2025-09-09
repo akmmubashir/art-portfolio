@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 type Props = {
   home?: boolean;
+  beta?: boolean;
 };
 
 const Navigation = (props: Props) => {
@@ -56,7 +57,11 @@ const Navigation = (props: Props) => {
       <div
         className={`flex items-center max-md:hidden ${
           !props.home
-            ? "bg-black dark:bg-white p-[4px_20px] rounded-full gap-[10px]"
+            ? `${
+                props.beta
+                  ? ""
+                  : "bg-black dark:bg-white p-[4px] rounded-full gap-[10px]"
+              }`
             : "gap-[40px] max-md:gap-[10px] "
         }`}
       >
@@ -83,13 +88,17 @@ const Navigation = (props: Props) => {
                   {item.name}
                 </motion.a>
               )
-            ) : (
+            ) : pathname === item.href && props.beta ? null : (
               <Link
                 href={`${item.href}`}
                 className={`text-[22px] max-md:text-[18px] font-medium underline-offset-4 lowercase p-[4px_14px] rounded-full ${
                   pathname === item.href
                     ? "text-black dark:text-white bg-white dark:bg-black"
-                    : "text-white dark:text-black hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white"
+                    : `${
+                        props.beta
+                          ? "text-black dark:text-white hover:underline"
+                          : "text-white dark:text-black hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white"
+                      }`
                 }`}
               >
                 {item.name}

@@ -1,5 +1,10 @@
 import { getData } from "./getData";
-import { AboutData, GeneralInfo, HomeData } from "../../types/data";
+import {
+  AboutData,
+  ContactData,
+  GeneralInfo,
+  HomeData,
+} from "../../types/data";
 
 export async function getGeneralInfo(): Promise<GeneralInfo | undefined> {
   try {
@@ -28,6 +33,17 @@ export async function getAboutData(): Promise<AboutData | undefined> {
   try {
     return await getData(
       `/about?populate=*`,
+      60 // Revalidate every 60 seconds
+    );
+  } catch (error) {
+    console.error("Failed to fetch about data:", error);
+    // throw notFound();
+  }
+}
+export async function getContactData(): Promise<ContactData | undefined> {
+  try {
+    return await getData(
+      `/contact?populate=*`,
       60 // Revalidate every 60 seconds
     );
   } catch (error) {

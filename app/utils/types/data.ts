@@ -38,3 +38,14 @@ export type AboutData = {
     resume?: { url: string };
   };
 };
+export type ContactData = {
+  data: {
+    ogTitle: string;
+    ogDescription: string;
+    metaTitle: string;
+    metaDescription: string;
+    heading: string;
+    description: string;
+    ogImage?: { url: string };
+  };
+};

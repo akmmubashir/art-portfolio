@@ -13,6 +13,7 @@ const GilroyBold = localFont({
   src: "../fonts/Gilroy-Bold.ttf",
   variable: "--font-gilroy-bold",
 });
+
 const fetchAboutData = cache(async (): Promise<Partial<AboutData>> => {
   try {
     const aboutData = await getAboutData();
