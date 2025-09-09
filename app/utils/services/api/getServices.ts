@@ -4,6 +4,7 @@ import {
   ContactData,
   GeneralInfo,
   HomeData,
+  ProjectsData,
 } from "../../types/data";
 
 export async function getGeneralInfo(): Promise<GeneralInfo | undefined> {
@@ -44,6 +45,17 @@ export async function getContactData(): Promise<ContactData | undefined> {
   try {
     return await getData(
       `/contact?populate=*`,
+      60 // Revalidate every 60 seconds
+    );
+  } catch (error) {
+    console.error("Failed to fetch about data:", error);
+    // throw notFound();
+  }
+}
+export async function getProjectsData(): Promise<ProjectsData | undefined> {
+  try {
+    return await getData(
+      `/projec?populate=*`,
       60 // Revalidate every 60 seconds
     );
   } catch (error) {

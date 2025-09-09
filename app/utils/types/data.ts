@@ -14,6 +14,7 @@ export type GeneralInfo = {
 
 export type HomeData = {
   data: {
+    pageTitle: string;
     ogTitle: string;
     ogDescription: string;
     metaTitle: string;
@@ -27,6 +28,7 @@ export type HomeData = {
 
 export type AboutData = {
   data: {
+    pageTitle: string;
     ogTitle: string;
     ogDescription: string;
     metaTitle: string;
@@ -40,6 +42,7 @@ export type AboutData = {
 };
 export type ContactData = {
   data: {
+    pageTitle: string;
     ogTitle: string;
     ogDescription: string;
     metaTitle: string;
@@ -47,5 +50,29 @@ export type ContactData = {
     heading: string;
     description: string;
     ogImage?: { url: string };
+  };
+};
+export type ProjectsData = {
+  data: {
+    pageTitle: string;
+    ogTitle: string;
+    ogDescription: string;
+    metaTitle: string;
+    metaDescription: string;
+    heading: string;
+    description: string;
+    ogImage?: { url: string };
+    list: [
+      {
+        id: number;
+        title: string;
+        subTitle: string;
+        color: string;
+        avatar?: { url: string };
+        bgVector?: { url: string };
+        bgImage?: { url: string };
+        bgImageMob?: { url: string };
+      }
+    ];
   };
 };

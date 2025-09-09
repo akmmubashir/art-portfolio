@@ -6,14 +6,14 @@ import Link from "next/link";
 import localFont from "next/font/local";
 
 type WorkItem = {
-  id: number;
-  projectLink: string;
-  title: string;
-  color: string;
-  bgImage: string;
-  image: string;
-  avatarImage: string;
-  mobileImage: string;
+  id?: number;
+  title?: string;
+  subTitle?: string;
+  color?: string;
+  avatar?: { url: string };
+  bgVector?: { url: string };
+  bgImage?: { url: string };
+  bgImageMob?: { url: string };
 };
 
 type Props = {
@@ -31,7 +31,7 @@ const WorksGrid = (props: Props) => {
     <div className="grid grid-cols-12 gap-[0px] max-md:gap-[50px_0] p-[60px_0] max-md:p-[30px_0_20px_0]">
       {dataList?.map((item: WorkItem) => (
         <Link
-          href={item.projectLink}
+          href={"/"}
           className="col-span-3 max-md:col-span-full h-[calc(100vh-460px)] max-md:h-full relative group"
           key={item.id}
         >
@@ -57,7 +57,7 @@ const WorksGrid = (props: Props) => {
               }}
               className={`text-[16px] max-md:text-[14px] text-center uppercase max-md:hidden text-black dark:text-white`}
             >
-              My Projects
+              {item.subTitle}
             </motion.h6>
           </div>
           <motion.div
@@ -71,7 +71,7 @@ const WorksGrid = (props: Props) => {
           >
             <div className="w-[80%] h-full">
               <Image
-                src={item.bgImage}
+                src={item.bgImage?.url || "/assets/works/Art.webp"}
                 alt={item.title + "Bg"}
                 width={1000}
                 height={1000}
@@ -82,7 +82,7 @@ const WorksGrid = (props: Props) => {
           <div className="w-full h-full flex justify-center items-center absolute bottom-[-10px] left-[50%] translate-x-[-50%] opacity-0 group-hover:opacity-100 peer-hover:opacity-0 transition-opacity duration-300 max-md:hidden">
             <div className="w-full h-full">
               <Image
-                src={item.image}
+                src={item.bgVector?.url || "/assets/works/art.png"}
                 alt={item.title + "Image"}
                 width={1000}
                 height={1000}
@@ -102,7 +102,7 @@ const WorksGrid = (props: Props) => {
               left-[60%] translate-x-[-60%]`}
           >
             <Image
-              src={item.avatarImage}
+              src={item.avatar?.url || "/assets/works/artGuy.png"}
               alt={item.title + "Avatar"}
               width={500}
               height={500}
@@ -119,7 +119,7 @@ const WorksGrid = (props: Props) => {
             className="md:hidden"
           >
             <Image
-              src={item.mobileImage}
+              src={item.bgImageMob?.url || "/assets/works/artMob.png"}
               alt={item.title + "MobileImage"}
               width={500}
               height={500}

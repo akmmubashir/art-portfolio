@@ -1,17 +1,67 @@
-import React from "react";
+import React, { cache } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import localFont from "next/font/local";
 import Navigation from "../components/navigation";
 import WorksGrid from "./components/workGrid";
-import { dataList } from "./data";
+import { Metadata } from "next";
+import { getProjectsData } from "../utils/services/api/getServices";
+import { ProjectsData } from "../utils/types/data";
 
 const GilroyBold = localFont({
   src: "../fonts/Gilroy-Bold.ttf",
   variable: "--font-gilroy-bold",
 });
 
-const page = () => {
+const fetchProjectsData = cache(async (): Promise<Partial<ProjectsData>> => {
+  try {
+    const projectsData = await getProjectsData();
+    return projectsData || {};
+  } catch (error) {
+    console.error("Error fetching projects data:", error);
+    return {};
+  }
+});
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  try {
+    const projectsData = await fetchProjectsData();
+    const defaultImage = "/assets/common/heroImage.png";
+
+    // Provide default values for all required fields
+    const title = projectsData?.data?.metaTitle || "Default Title";
+    const description =
+      projectsData?.data?.metaDescription || "Default Description";
+    const ogTitle = projectsData?.data?.ogTitle || title;
+    const ogDescription = projectsData?.data?.ogDescription || description;
+    const ogImage = projectsData?.data?.ogImage?.url || defaultImage;
+
+    return {
+      title,
+      description,
+      openGraph: {
+        title: ogTitle,
+        description: ogDescription,
+        locale: "en",
+        images: [
+          {
+            url: ogImage,
+            alt: ogTitle,
+          },
+        ],
+      },
+    };
+  } catch (error) {
+    console.error("Error generating metadata:", error);
+    return {
+      title: "Projects",
+      description: "Projects Description",
+    };
+  }
+};
+
+const page = async () => {
+  const projectsData = await fetchProjectsData();
   return (
     <div className="md:h-screen bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
       <Header />
@@ -21,11 +71,11 @@ const page = () => {
             className="font-Gilroy font-bold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
             style={{ fontFamily: GilroyBold.style.fontFamily }}
           >
-            Projects
+            {projectsData?.data?.pageTitle || "Projects"}
           </h1>
           <Navigation beta />
         </div>
-        <WorksGrid dataList={dataList} />
+        <WorksGrid dataList={projectsData?.data?.list || []} />
       </div>
       <Footer />
     </div>
