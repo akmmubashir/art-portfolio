@@ -44,7 +44,7 @@ export async function getAboutData(): Promise<AboutData | undefined> {
 export async function getContactData(): Promise<ContactData | undefined> {
   try {
     return await getData(
-      `/contact?populate=*`,
+      `/contact?populate[ogImage][fields][0]=url&populate[social][populate][dayIcon][fields][0]=url&populate[social][populate][nightIcon][fields][0]=url`,
       60 // Revalidate every 60 seconds
     );
   } catch (error) {
@@ -63,3 +63,14 @@ export async function getProjectsData(): Promise<ProjectsData | undefined> {
     // throw notFound();
   }
 }
+// export async function getArtProjectsData(): Promise<ProjectsData | undefined> {
+//   try {
+//     return await getData(
+//       `/art-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
+//       60 // Revalidate every 60 seconds
+//     );
+//   } catch (error) {
+//     console.error("Failed to fetch about data:", error);
+//     // throw notFound();
+//   }
+// }
