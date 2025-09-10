@@ -55,7 +55,7 @@ export async function getContactData(): Promise<ContactData | undefined> {
 export async function getProjectsData(): Promise<ProjectsData | undefined> {
   try {
     return await getData(
-      `/projec?populate=*`,
+      `/projec?populate[ogImage][fields][0]=url&populate[list][populate][avatar][fields][0]=url&populate[list][populate][bgVector][fields][0]=url&populate[list][populate][bgImage][fields][0]=url&populate[list][populate][bgImageMob][fields][0]=url`,
       60 // Revalidate every 60 seconds
     );
   } catch (error) {
