@@ -13,6 +13,10 @@ const GilroyBold = localFont({
   src: "../../fonts/Gilroy-Bold.ttf",
   variable: "--font-gilroy-bold",
 });
+const GilroyMedium = localFont({
+  src: "../../fonts/Gilroy-Medium.ttf",
+  variable: "--font-gilroy-medium",
+});
 
 const fetchProjectsData = cache(async (): Promise<Partial<ArtProjectsData>> => {
   try {
@@ -74,7 +78,7 @@ const page = async () => {
         <div className="flex flex-col gap-[20px] max-md:gap-[10px]">
           <h2
             className="font-Gilroy font-bold text-[20px] max-md:text-[16px] leading-[20px] max-md:leading-[16px]"
-            style={{ fontFamily: GilroyBold.style.fontFamily }}
+            style={{ fontFamily: GilroyMedium.style.fontFamily }}
           >
             {projectsData?.data?.subHeading}
           </h2>
