@@ -12,7 +12,7 @@ const Header = ({ innerPage, bgImage }: Props) => {
   return (
     <React.Fragment>
       {!innerPage ? (
-        <div className="bg-white dark:bg-[#353535] sticky top-0 z-50 w-full p-[50px_50px_0px_50px] max-md:p-[20px_20px_10px_20px]">
+        <div className="bg-white dark:bg-[#353535] sticky top-0 z-50 w-full p-[50px_50px_0px_50px] max-md:p-[15px_20px] max-md:bg-white/10 max-md:dark:bg-gray-900/30 max-md:backdrop-blur-[3px] max-md:border-b max-md:border-white/20 max-md:dark:border-gray-900/20">
           <div className="">
             <div className="flex justify-between items-center">
               <Link href="/" className="w-[120px] max-md:w-[80px]">
@@ -36,9 +36,9 @@ const Header = ({ innerPage, bgImage }: Props) => {
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
-          className="bg-[#F3F3F3] dark:bg-[#000] w-full p-[50px_50px_0px_50px] max-md:p-[20px_20px_10px_20px] min-h-[400px] max-h-[530px]"
+          className="bg-[#F3F3F3] dark:bg-[#000] w-full min-h-[400px] max-h-[530px]"
         >
-          <div className="">
+          <div className="bg-white/10 dark:bg-gray-900/30 backdrop-blur-[3px] border-b border-white/20 dark:border-gray-900/20 p-[30px_50px] max-md:p-[15px_20px] max-md:fixed max-md:w-full top-0 z-50">
             <div className="flex justify-between items-center">
               <Link
                 href="/projects"

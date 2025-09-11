@@ -76,6 +76,7 @@ const WorksGrid = (props: Props) => {
                 width={1000}
                 height={1000}
                 className="w-full h-full object-cover"
+                priority
               />
             </div>
           </motion.div>
@@ -124,6 +125,7 @@ const WorksGrid = (props: Props) => {
               width={500}
               height={500}
               className="w-full h-full object-cover"
+              priority
             />
           </motion.div>
         </Link>

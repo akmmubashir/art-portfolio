@@ -3,8 +3,10 @@ import {
   AboutData,
   ArtProjectsData,
   ContactData,
+  EducationProjectsData,
   GeneralInfo,
   HomeData,
+  IndiaProjectsData,
   ProjectsData,
 } from "../../types/data";
 
@@ -70,6 +72,32 @@ export async function getArtProjectsData(): Promise<
   try {
     return await getData(
       `/art-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
+      60 // Revalidate every 60 seconds
+    );
+  } catch (error) {
+    console.error("Failed to fetch about data:", error);
+    // throw notFound();
+  }
+}
+export async function getEducationProjectsData(): Promise<
+  EducationProjectsData | undefined
+> {
+  try {
+    return await getData(
+      `/education-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
+      60 // Revalidate every 60 seconds
+    );
+  } catch (error) {
+    console.error("Failed to fetch about data:", error);
+    // throw notFound();
+  }
+}
+export async function getIndiaProjectsData(): Promise<
+  IndiaProjectsData | undefined
+> {
+  try {
+    return await getData(
+      `/india-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
       60 // Revalidate every 60 seconds
     );
   } catch (error) {
