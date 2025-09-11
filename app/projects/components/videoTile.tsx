@@ -32,7 +32,7 @@ const VideoTile = (props: VideoTileProps) => {
           autoPlay
           loop
           muted
-          playsInline
+          controls
         ></video>
       ) : (
         <div className="w-full h-64 bg-gray-100 flex items-center justify-center">
