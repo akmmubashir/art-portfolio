@@ -5,6 +5,7 @@ import {
   HomeIcon,
   ProjectsIcon,
   ContactIcon,
+  CircleArrowIcon,
 } from "../components/icons";
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
@@ -12,6 +13,7 @@ import Link from "next/link";
 type Props = {
   home?: boolean;
   beta?: boolean;
+  project?: boolean;
 };
 
 const Navigation = (props: Props) => {
@@ -121,6 +123,30 @@ const Navigation = (props: Props) => {
               {pathname === item.href ? null : item.name}
             </motion.a>
           ))}
+        </div>
+      ) : props.project ? (
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 p-[20px] overflow-hidden flex items-center gap-[10px] justify-center">
+          <div className="flex items-center justify-between gap-[20px] bg-white/10 dark:bg-gray-900/30 backdrop-blur-[3px] border-b border-white/20 dark:border-gray-900/20 p-[6px] aspect-square rounded-full shadow-lg">
+            <Link
+              href={menuItems[0].href}
+              className={`aspect-square flex items-center justify-center font-medium capitalize p-[8px] rounded-full text-white dark:text-black hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white`}
+            >
+              {menuItems[0].icon}
+            </Link>
+          </div>
+          <div className="flex items-center justify-center gap-[20px] bg-white/10 dark:bg-gray-900/30 backdrop-blur-[3px] border-b border-white/20 dark:border-gray-900/20 p-[6px_12px] rounded-full shadow-lg w-full">
+            <Link
+              href={"/projects"}
+              className={`flex items-center justify-center font-medium capitalize p-[4px] rounded-full text-white dark:text-black hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white gap-[10px]`}
+            >
+              <div className="w-[32px] h-[32px]">
+                <CircleArrowIcon className="stroke-black dark:stroke-white" />
+              </div>
+              <span className="text-[14px] text-black dark:text-white uppercase whitespace-nowrap">
+                Back To Projects
+              </span>
+            </Link>
+          </div>
         </div>
       ) : (
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 p-[20px] overflow-hidden">

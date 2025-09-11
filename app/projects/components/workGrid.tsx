@@ -31,7 +31,7 @@ const WorksGrid = (props: Props) => {
     <div className="grid grid-cols-12 gap-[0px] max-md:gap-[50px_0] p-[60px_0] max-md:p-[30px_0_20px_0]">
       {dataList?.map((item: WorkItem) => (
         <Link
-          href={"/"}
+          href={`/projects/${item.title?.toLowerCase().replace(/\s/g, "-")}`}
           className="col-span-3 max-md:col-span-full h-[calc(100vh-460px)] max-md:h-full relative group"
           key={item.id}
         >

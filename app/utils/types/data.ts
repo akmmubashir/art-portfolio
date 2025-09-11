@@ -76,3 +76,34 @@ export type ProjectsData = {
     ];
   };
 };
+export type ArtProjectsData = {
+  data: {
+    id: number;
+    documentId: string;
+    pageTitle: string;
+    ogTitle: string;
+    ogDescription: string;
+    metaTitle: string;
+    metaDescription: string;
+    heading: string;
+    subHeading: string;
+    description: string;
+    ogImage?: { url: string };
+    bannerBg?: { url: string };
+    bannerBgMob?: { url: string };
+    images: [
+      {
+        id: number;
+        width: string;
+        image?: { url: string };
+      }
+    ];
+    video: [
+      {
+        id: number;
+        width: string;
+        video?: { url: string };
+      }
+    ];
+  };
+};

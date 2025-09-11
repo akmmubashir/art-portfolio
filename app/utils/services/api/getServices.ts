@@ -1,6 +1,7 @@
 import { getData } from "./getData";
 import {
   AboutData,
+  ArtProjectsData,
   ContactData,
   GeneralInfo,
   HomeData,
@@ -63,14 +64,16 @@ export async function getProjectsData(): Promise<ProjectsData | undefined> {
     // throw notFound();
   }
 }
-// export async function getArtProjectsData(): Promise<ProjectsData | undefined> {
-//   try {
-//     return await getData(
-//       `/art-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
-//       60 // Revalidate every 60 seconds
-//     );
-//   } catch (error) {
-//     console.error("Failed to fetch about data:", error);
-//     // throw notFound();
-//   }
-// }
+export async function getArtProjectsData(): Promise<
+  ArtProjectsData | undefined
+> {
+  try {
+    return await getData(
+      `/art-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
+      60 // Revalidate every 60 seconds
+    );
+  } catch (error) {
+    console.error("Failed to fetch about data:", error);
+    // throw notFound();
+  }
+}
