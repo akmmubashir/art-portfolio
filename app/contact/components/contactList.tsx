@@ -55,7 +55,7 @@ const ContactList: React.FC<ContactListProps> = ({ contactData }) => {
           <Link
             key={item.id}
             href={item.link}
-            className="cursor-pointer flex items-center justify-center w-[40px] aspect-square rounded-full bg-black dark:bg-white hover:bg-[#353535] dark:hover:bg-[#c5c5c5] text-white dark:text-black hover:text-white dark:hover:text-white p-[8px]"
+            className="cursor-pointer flex items-center justify-center w-[40px] aspect-square rounded-full bg-black dark:bg-white hover:bg-[#464646] dark:hover:bg-[#f1f1f1] text-white dark:text-black hover:text-white dark:hover:text-white p-[8px]"
             target="_blank"
             rel="noopener noreferrer"
           >
