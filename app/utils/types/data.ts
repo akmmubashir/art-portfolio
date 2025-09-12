@@ -50,6 +50,18 @@ export type ContactData = {
     heading: string;
     description: string;
     ogImage?: { url: string };
+    social: [
+      {
+        id: number;
+        name: string;
+        link: string;
+        dayIcon?: { url: string };
+        nightIcon?: { url: string };
+      }
+    ];
+    email: string;
+    countryCode: string;
+    phoneNumber: string;
   };
 };
 export type ProjectsData = {

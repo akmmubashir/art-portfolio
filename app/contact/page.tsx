@@ -4,17 +4,10 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import Navigation from "../components/navigation";
 import ContactForm from "../components/contactForm";
-import {
-  CallIcon,
-  EmailIcon,
-  InstagramIcon,
-  WhatsappIcon,
-  //   FacebookIcon,
-} from "../components/icons";
-import Link from "next/link";
 import { ContactData } from "../utils/types/data";
 import { getContactData } from "../utils/services/api/getServices";
 import { Metadata } from "next";
+import ContactList from "./components/contactList";
 
 const GilroyBold = localFont({
   src: "../fonts/Gilroy-Bold.ttf",
@@ -70,58 +63,6 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const page = async () => {
   const contactData = await fetchContactData();
-  const socialData = [
-    {
-      id: 1,
-      name: "Email",
-      link: "mailto:example@gmail.com",
-      icon: (
-        <EmailIcon
-          className="stroke-white dark:stroke-black"
-          strokeWidth="1.4"
-        />
-      ),
-    },
-    {
-      id: 2,
-      name: "Phone",
-      link: "tel:123456789",
-      icon: (
-        <CallIcon
-          className="stroke-white dark:stroke-black"
-          strokeWidth="1.4"
-        />
-      ),
-    },
-    {
-      id: 3,
-      name: "Whatsapp",
-      link: "https://wa.me/123456789",
-      icon: (
-        <WhatsappIcon
-          className="stroke-white dark:stroke-black"
-          strokeWidth="1.4"
-        />
-      ),
-    },
-    {
-      id: 4,
-      name: "Instagram",
-      link: "https://www.instagram.com",
-      icon: (
-        <InstagramIcon
-          className="stroke-white dark:stroke-black"
-          strokeWidth="1.4"
-        />
-      ),
-    },
-    // {
-    //   id: 5,
-    //   name: "Facebook",
-    //   link: "https://www.facebook.com",
-    //   icon: <FacebookIcon className="stroke-white dark:stroke-black" strokeWidth="1.4" />,
-    // },
-  ];
   return (
     <div className="md:h-screen bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
       <Header />
@@ -137,17 +78,11 @@ const page = async () => {
             <p className="text-[#52575E] dark:text-white text-[20px] max-md:text-[14px] text-justify">
               {contactData?.data?.description || "Default Description"}
             </p>
-            <div className="flex gap-[20px]">
-              {socialData.map((item, index) => (
-                <Link
-                  href={item.link}
-                  key={index}
-                  className="cursor-pointer flex items-center justify-center w-[40px] aspect-square rounded-full bg-black dark:bg-white hover:bg-[#353535] dark:hover:bg-[#c5c5c5] text-white dark:text-black hover:text-white dark:hover:text-white "
-                >
-                  {item.icon}
-                </Link>
-              ))}
-            </div>
+            {contactData?.data?.social?.length ? (
+              <ContactList
+                contactData={{ data: { social: contactData.data.social } }}
+              />
+            ) : null}
           </div>
           <div className="col-span-7 max-md:col-span-full flex flex-col gap-[10px] max-md:gap-[10px_0]">
             <ContactForm />
