@@ -74,7 +74,7 @@ const page = async () => {
         bgImage={projectsData?.data?.bannerBg?.url}
         bgImageMob={projectsData?.data?.bannerBgMob?.url}
       />
-      <div className="flex-1 flex flex-col p-[30px_50px] max-md:p-[20px_20px_50px_20px] gap-[40px]">
+      <div className="flex-1 flex flex-col p-[50px] max-md:p-[40px_20px_60px_20px] gap-[40px] max-w-[1440px] mx-auto">
         <div className="flex flex-col gap-[20px] max-md:gap-[10px]">
           <h2
             className="font-Gilroy font-bold text-[20px] max-md:text-[16px] leading-[20px] max-md:leading-[16px]"
@@ -90,7 +90,7 @@ const page = async () => {
           </h1>
           <p>{projectsData?.data?.description}</p>
         </div>
-        <div className="flex flex-col gap-[20px] max-w-[1200px] mx-auto max-md:pb-[40px]">
+        <div className="flex flex-col gap-[20px] max-md:pb-[40px]">
           <ImageGrid
             dataList={projectsData?.data?.images || []}
             pageTitle={projectsData?.data?.pageTitle}

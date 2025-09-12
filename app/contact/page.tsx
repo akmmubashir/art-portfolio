@@ -154,7 +154,7 @@ const page = async () => {
           </div>
         </div>
         <div className="mt-auto mx-auto">
-          <Navigation />
+          <Navigation beta />
         </div>
       </div>
       <Footer />
