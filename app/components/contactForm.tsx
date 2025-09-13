@@ -11,8 +11,13 @@ const ContactForm = ({ closePopup }: { closePopup?: () => void }) => {
     email: "",
     message: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    success: boolean;
+    message: string;
+  } | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formErrors = { name: "", email: "", message: "" };
@@ -35,14 +40,55 @@ const ContactForm = ({ closePopup }: { closePopup?: () => void }) => {
     }
 
     setErrors(formErrors);
+    setSubmitStatus(null);
 
     if (!hasError) {
-      console.log("Form submitted:", { name, email, message });
-      // Reset form
-      setName("");
-      setEmail("");
-      setMessage("");
-      setErrors({ name: "", email: "", message: "" });
+      setIsLoading(true);
+      try {
+        const response = await fetch(
+          process.env.NEXT_PUBLIC_CONTACT_API || "",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name, email, message }),
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          setSubmitStatus({
+            success: true,
+            message: data.message || "Message sent successfully!",
+          });
+          // Reset form on successful submission
+          setName("");
+          setEmail("");
+          setMessage("");
+          setErrors({ name: "", email: "", message: "" });
+
+          // Auto-close popup after 2 seconds if it's in a popup
+          if (closePopup) {
+            setTimeout(() => {
+              closePopup();
+            }, 2000);
+          }
+        } else {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Failed to send message");
+        }
+      } catch (error) {
+        setSubmitStatus({
+          success: false,
+          message:
+            error instanceof Error
+              ? error.message
+              : "An error occurred while sending your message",
+        });
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -87,12 +133,28 @@ const ContactForm = ({ closePopup }: { closePopup?: () => void }) => {
           {errors.message ? errors.message : null}
         </p>
       </div>
+      {submitStatus && (
+        <div
+          className={`mb-4 p-3 rounded ${
+            submitStatus.success
+              ? "bg-green-100 text-green-700"
+              : "bg-red-100 text-red-700"
+          }`}
+        >
+          {submitStatus.message}
+        </div>
+      )}
       <div className={`flex gap-[20px] mt-[10px]`}>
         <button
           type="submit"
-          className="font-medium w-fit text-[18px] max-md:text-[16px] cursor-pointer p-[10px_40px] max-md:p-[10px_30px] bg-black dark:bg-white hover:bg-[#353535] dark:hover:bg-black text-white dark:text-black hover:text-white dark:hover:text-white"
+          disabled={isLoading}
+          className={`font-medium w-fit text-[18px] max-md:text-[16px] cursor-pointer p-[10px_40px] max-md:p-[10px_30px] ${
+            isLoading
+              ? "bg-gray-400 dark:bg-gray-600 cursor-not-allowed"
+              : "bg-black dark:bg-white hover:bg-[#353535] dark:hover:bg-black text-white dark:text-black hover:text-white dark:hover:text-white"
+          }`}
         >
-          Submit
+          {isLoading ? "Sending..." : "Submit"}
         </button>
 
         {closePopup ? (

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   AboutIcon,
   HomeIcon,
@@ -57,6 +57,17 @@ const Navigation = (props: Props) => {
     },
   ];
   const pathname = usePathname();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Prevent rendering until component is mounted on client
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <React.Fragment>
       <div
@@ -73,7 +84,7 @@ const Navigation = (props: Props) => {
         {menuItems.map((item, index) => (
           <React.Fragment key={index}>
             {props.home ? (
-              pathname === item.href ? (
+              isMounted && pathname === item.href ? (
                 <motion.div
                   animate={{ x: [-100, 0] }}
                   transition={{ duration: 1 }}
