@@ -1,11 +1,8 @@
 import React, { cache } from "react";
 import { Metadata } from "next";
 import localFont from "next/font/local";
-import {
-  getArtProjectsData,
-  getIndiaProjectsData,
-} from "@/app/utils/services/api/getServices";
-import { ArtProjectsData, IndiaProjectsData } from "@/app/utils/types/data";
+import { getIndiaProjectsData } from "@/app/utils/services/api/getServices";
+import { IndiaProjectsData } from "@/app/utils/types/data";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import Navigation from "@/app/components/navigation";

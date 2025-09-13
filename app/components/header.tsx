@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowIcon, CircleArrowIcon, Logo } from "./icons";
 import ThemeToggle from "./themeToggle";
 import Link from "next/link";
+import FormPopup from "./formPopup";
 
 interface Props {
   innerPage?: boolean;
@@ -20,10 +21,7 @@ const Header = ({ innerPage, bgImage }: Props) => {
               </Link>
               <div className="flex items-center gap-[0_20px]">
                 <ThemeToggle />
-                <button className="flex items-center gap-[10px] cursor-pointer text-textDark dark:text-textLight">
-                  <span className="max-md:hidden">start a project</span>
-                  <ArrowIcon className="fill-black dark:fill-white" />
-                </button>
+                <FormPopup />
               </div>
             </div>
           </div>

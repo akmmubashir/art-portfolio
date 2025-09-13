@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-const ContactForm = () => {
+const ContactForm = ({ closePopup }: { closePopup?: () => void }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -87,13 +87,23 @@ const ContactForm = () => {
           {errors.message ? errors.message : null}
         </p>
       </div>
+      <div className={`flex gap-[20px] mt-[10px]`}>
+        <button
+          type="submit"
+          className="font-medium w-fit text-[18px] max-md:text-[16px] cursor-pointer p-[10px_40px] max-md:p-[10px_30px] bg-black dark:bg-white hover:bg-[#353535] dark:hover:bg-black text-white dark:text-black hover:text-white dark:hover:text-white"
+        >
+          Submit
+        </button>
 
-      <button
-        type="submit"
-        className="font-medium w-fit mt-[20px] max-md:mt-[10px] text-[18px] max-md:text-[16px] cursor-pointer p-[10px_40px] max-md:p-[10px_30px] bg-black dark:bg-white hover:bg-[#353535] dark:hover:bg-black text-white dark:text-black hover:text-white dark:hover:text-white"
-      >
-        Submit
-      </button>
+        {closePopup ? (
+          <button
+            onClick={closePopup}
+            className="font-medium w-fit text-[18px] max-md:text-[16px] cursor-pointer p-[10px_40px] max-md:p-[10px_30px] bg-[#F7F7F7] dark:bg-[#383838] hover:bg-[#353535] dark:hover:bg-black text-black dark:text-white hover:text-white dark:hover:text-white"
+          >
+            Close
+          </button>
+        ) : null}
+      </div>
     </form>
   );
 };
