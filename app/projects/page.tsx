@@ -1,85 +1,95 @@
-import React, { cache } from "react";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import localFont from "next/font/local";
-import Navigation from "../components/navigation";
-import WorksGrid from "./components/workGrid";
-import { Metadata } from "next";
-import { getProjectsData } from "../utils/services/api/getServices";
-import { ProjectsData } from "../utils/types/data";
+// import React, { cache } from "react";
+// import Header from "../components/header";
+// import Footer from "../components/footer";
+// import localFont from "next/font/local";
+// import Navigation from "../components/navigation";
+// import WorksGrid from "./components/workGrid";
+// import { Metadata } from "next";
+// import { getProjectsData } from "../utils/services/api/getServices";
+// import { ProjectsData } from "../utils/types/data";
 
-const GilroyBold = localFont({
-  src: "../fonts/Gilroy-Bold.ttf",
-  variable: "--font-gilroy-bold",
-});
+// const GilroyBold = localFont({
+//   src: "../fonts/Gilroy-Bold.ttf",
+//   variable: "--font-gilroy-bold",
+// });
 
-const fetchProjectsData = cache(async (): Promise<Partial<ProjectsData>> => {
-  try {
-    const projectsData = await getProjectsData();
-    return projectsData || {};
-  } catch (error) {
-    console.error("Error fetching projects data:", error);
-    return {};
-  }
-});
+// const fetchProjectsData = cache(async (): Promise<Partial<ProjectsData>> => {
+//   try {
+//     const projectsData = await getProjectsData();
+//     return projectsData || {};
+//   } catch (error) {
+//     console.error("Error fetching projects data:", error);
+//     return {};
+//   }
+// });
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  try {
-    const projectsData = await fetchProjectsData();
-    const defaultImage = "/assets/common/heroImage.png";
+// export const generateMetadata = async (): Promise<Metadata> => {
+//   try {
+//     const projectsData = await fetchProjectsData();
+//     const defaultImage = "/assets/common/heroImage.png";
 
-    // Provide default values for all required fields
-    const title = projectsData?.data?.metaTitle || "Default Title";
-    const description =
-      projectsData?.data?.metaDescription || "Default Description";
-    const ogTitle = projectsData?.data?.ogTitle || title;
-    const ogDescription = projectsData?.data?.ogDescription || description;
-    const ogImage = projectsData?.data?.ogImage?.url || defaultImage;
+//     // Provide default values for all required fields
+//     const title = projectsData?.data?.metaTitle || "Default Title";
+//     const description =
+//       projectsData?.data?.metaDescription || "Default Description";
+//     const ogTitle = projectsData?.data?.ogTitle || title;
+//     const ogDescription = projectsData?.data?.ogDescription || description;
+//     const ogImage = projectsData?.data?.ogImage?.url || defaultImage;
 
-    return {
-      title,
-      description,
-      openGraph: {
-        title: ogTitle,
-        description: ogDescription,
-        locale: "en",
-        images: [
-          {
-            url: ogImage,
-            alt: ogTitle,
-          },
-        ],
-      },
-    };
-  } catch (error) {
-    console.error("Error generating metadata:", error);
-    return {
-      title: "Projects",
-      description: "Projects Description",
-    };
-  }
-};
+//     return {
+//       title,
+//       description,
+//       openGraph: {
+//         title: ogTitle,
+//         description: ogDescription,
+//         locale: "en",
+//         images: [
+//           {
+//             url: ogImage,
+//             alt: ogTitle,
+//           },
+//         ],
+//       },
+//     };
+//   } catch (error) {
+//     console.error("Error generating metadata:", error);
+//     return {
+//       title: "Projects",
+//       description: "Projects Description",
+//     };
+//   }
+// };
 
-const page = async () => {
-  const projectsData = await fetchProjectsData();
+// const page = async () => {
+//   const projectsData = await fetchProjectsData();
+//   return (
+//     <div className="md:h-screen bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
+//       <Header />
+//       <div className="flex-1 flex flex-col p-[30px_50px] max-md:p-[20px_20px_50px_20px]">
+//         <div className="flex items-center justify-between max-md:justify-center">
+//           <h1
+//             className="font-Gilroy font-bold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
+//             style={{ fontFamily: GilroyBold.style.fontFamily }}
+//           >
+//             {projectsData?.data?.pageTitle || "Projects"}
+//           </h1>
+//           <Navigation beta />
+//         </div>
+//         <WorksGrid dataList={projectsData?.data?.list || []} />
+//       </div>
+//       <Footer />
+//     </div>
+//   );
+// };
+
+// export default page;
+
+import React from 'react'
+
+const page = () => {
   return (
-    <div className="md:h-screen bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
-      <Header />
-      <div className="flex-1 flex flex-col p-[30px_50px] max-md:p-[20px_20px_50px_20px]">
-        <div className="flex items-center justify-between max-md:justify-center">
-          <h1
-            className="font-Gilroy font-bold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
-            style={{ fontFamily: GilroyBold.style.fontFamily }}
-          >
-            {projectsData?.data?.pageTitle || "Projects"}
-          </h1>
-          <Navigation beta />
-        </div>
-        <WorksGrid dataList={projectsData?.data?.list || []} />
-      </div>
-      <Footer />
-    </div>
-  );
-};
+    <div>page</div>
+  )
+}
 
-export default page;
+export default page
