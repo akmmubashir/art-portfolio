@@ -39,8 +39,7 @@ const Navigation = (props: Props) => {
     {
       id: 3,
       name: "Projects",
-      // href: "/projects",
-      href: "#",
+      href: "/projects",
       icon: (
         <ProjectsIcon className="stroke-black dark:stroke-white max-md:stroke-black max-md:dark:stroke-white" />
       ),
