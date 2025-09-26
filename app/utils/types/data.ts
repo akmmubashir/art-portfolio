@@ -150,7 +150,7 @@ export type EducationProjectsData = {
     ];
   };
 };
-export type IndiaProjectsData = {
+export type OriginsProjectsData = {
   data: {
     id: number;
     documentId: string;

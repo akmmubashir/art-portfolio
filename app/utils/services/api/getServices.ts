@@ -6,7 +6,7 @@ import {
   EducationProjectsData,
   GeneralInfo,
   HomeData,
-  IndiaProjectsData,
+  OriginsProjectsData,
   ProjectsData,
 } from "../../types/data";
 
@@ -92,12 +92,12 @@ export async function getEducationProjectsData(): Promise<
     // throw notFound();
   }
 }
-export async function getIndiaProjectsData(): Promise<
-  IndiaProjectsData | undefined
+export async function getOriginsProjectsData(): Promise<
+  OriginsProjectsData | undefined
 > {
   try {
     return await getData(
-      `/india-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
+      `/origins-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
       60 // Revalidate every 60 seconds
     );
   } catch (error) {

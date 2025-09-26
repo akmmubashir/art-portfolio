@@ -1,8 +1,8 @@
 import React, { cache } from "react";
 import { Metadata } from "next";
 import localFont from "next/font/local";
-import { getIndiaProjectsData } from "@/app/utils/services/api/getServices";
-import { IndiaProjectsData } from "@/app/utils/types/data";
+import { getOriginsProjectsData } from "@/app/utils/services/api/getServices";
+import { OriginsProjectsData } from "@/app/utils/types/data";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import Navigation from "@/app/components/navigation";
@@ -19,9 +19,9 @@ const GilroyMedium = localFont({
 });
 
 const fetchProjectsData = cache(
-  async (): Promise<Partial<IndiaProjectsData>> => {
+  async (): Promise<Partial<OriginsProjectsData>> => {
     try {
-      const projectsData = await getIndiaProjectsData();
+      const projectsData = await getOriginsProjectsData();
       return projectsData || {};
     } catch (error) {
       console.error("Error fetching projects data:", error);

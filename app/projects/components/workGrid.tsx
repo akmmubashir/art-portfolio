@@ -81,7 +81,7 @@ const WorksGrid = (props: Props) => {
             </div>
           </motion.div>
           <div className="w-full h-full flex justify-center items-center absolute bottom-[-10px] left-[50%] translate-x-[-50%] opacity-0 group-hover:opacity-100 peer-hover:opacity-0 transition-opacity duration-300 max-md:hidden">
-            <div className="w-full h-full">
+            <div className="w-3/4 h-full">
               <Image
                 src={item.bgVector?.url || "/assets/works/art.png"}
                 alt={item.title + "Image"}
@@ -100,7 +100,7 @@ const WorksGrid = (props: Props) => {
             }}
             className={`w-[350px] aspect-square flex justify-center items-center absolute bottom-[-140px]  transition-transform duration-300
               hover:-translate-y-5 max-md:hidden 
-              left-[60%] translate-x-[-60%]`}
+              left-[50%] translate-x-[-50%]`}
           >
             <Image
               src={item.avatar?.url || "/assets/works/artGuy.png"}
