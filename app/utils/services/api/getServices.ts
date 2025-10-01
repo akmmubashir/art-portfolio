@@ -84,7 +84,7 @@ export async function getEducationProjectsData(): Promise<
 > {
   try {
     return await getData(
-      `/education-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
+      `/academic-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
       60 // Revalidate every 60 seconds
     );
   } catch (error) {
@@ -98,6 +98,19 @@ export async function getOriginsProjectsData(): Promise<
   try {
     return await getData(
       `/origins-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
+      60 // Revalidate every 60 seconds
+    );
+  } catch (error) {
+    console.error("Failed to fetch about data:", error);
+    // throw notFound();
+  }
+}
+export async function getProfessionalProjectsData(): Promise<
+  OriginsProjectsData | undefined
+> {
+  try {
+    return await getData(
+      `/professional-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
       60 // Revalidate every 60 seconds
     );
   } catch (error) {

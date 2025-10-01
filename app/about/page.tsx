@@ -8,6 +8,7 @@ import Navigation from "../components/navigation";
 import { DownloadIcon } from "../components/icons";
 import { getAboutData } from "../utils/services/api/getServices";
 import { AboutData } from "../utils/types/data";
+import ResumeDownload from "./components/resumeDownload";
 
 const GilroyBold = localFont({
   src: "../fonts/Gilroy-Bold.ttf",
@@ -63,11 +64,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const page = async () => {
   const aboutData = await fetchAboutData();
+  console.log(aboutData);
+
   return (
-    <div className="md:h-screen  bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
+    <div className="md:min-h-screen bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
       <Header />
-      <div className="flex-1 flex flex-col p-[100px_50px_30px_50px] max-md:p-[20px_20px_50px_20px]">
-        <div className="grid grid-cols-12 gap-[100px] max-md:gap-[20px_0]">
+      <div className="flex-1 flex flex-col p-[30px_50px_30px_50px] max-md:p-[20px_20px_50px_20px]">
+        <div className="grid grid-cols-12 gap-[100px] max-md:gap-[20px_0] flex-1 items-center">
           <div className="col-span-3 max-md:col-span-full">
             <Image
               src={
@@ -90,13 +93,7 @@ const page = async () => {
             <p className="text-[#52575E] dark:text-white text-[20px] max-md:text-[14px] text-justify">
               {aboutData?.data?.description || "Default Description"}
             </p>
-            <button className="cursor-pointer w-[160px] max-md:w-[120px]">
-              <DownloadIcon
-                className="fill-black dark:fill-white"
-                width="100%"
-                height="100%"
-              />
-            </button>
+            <ResumeDownload resume={aboutData?.data?.resume} />
           </div>
         </div>
         <div className="mt-auto mx-auto">
