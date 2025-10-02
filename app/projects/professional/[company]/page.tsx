@@ -1,5 +1,4 @@
 import React, { cache } from "react";
-import Image from "next/image";
 import { Metadata } from "next";
 import localFont from "next/font/local";
 import { getProfessionalProjectsData } from "@/app/utils/services/api/getServices";
@@ -12,10 +11,10 @@ const GilroyBold = localFont({
   src: "../../../fonts/Gilroy-Bold.ttf",
   variable: "--font-gilroy-bold",
 });
-const GilroyMedium = localFont({
-  src: "../../../fonts/Gilroy-Medium.ttf",
-  variable: "--font-gilroy-medium",
-});
+// const GilroyMedium = localFont({
+//   src: "../../../fonts/Gilroy-Medium.ttf",
+//   variable: "--font-gilroy-medium",
+// });
 
 const fetchProjectsData = cache(
   async (): Promise<Partial<ProfessionalProjectsData>> => {
@@ -97,7 +96,13 @@ const page = async (props: { params: Promise<{ company: string }> }) => {
         </div>
       </div>
       <div className="md:hidden">
-        <Navigation project />
+        <Navigation
+          project
+          backTo={{
+            link: "/projects/professional",
+            text: "Back To Professional",
+          }}
+        />
       </div>
       <Footer />
     </div>

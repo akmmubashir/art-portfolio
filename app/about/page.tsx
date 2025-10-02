@@ -5,7 +5,7 @@ import localFont from "next/font/local";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Navigation from "../components/navigation";
-import { DownloadIcon } from "../components/icons";
+// import { DownloadIcon } from "../components/icons";
 import { getAboutData } from "../utils/services/api/getServices";
 import { AboutData } from "../utils/types/data";
 import ResumeDownload from "./components/resumeDownload";

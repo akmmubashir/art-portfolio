@@ -106,7 +106,13 @@ const page = async () => {
         </div>
       </div>
       <div className="md:hidden">
-        <Navigation project />
+        <Navigation
+          project
+          backTo={{
+            link: "/projects",
+            text: "Back To Projects",
+          }}
+        />
       </div>
       <Footer />
     </div>

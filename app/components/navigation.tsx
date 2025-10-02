@@ -14,6 +14,10 @@ type Props = {
   home?: boolean;
   beta?: boolean;
   project?: boolean;
+  backTo?: {
+    link: string;
+    text: string;
+  };
 };
 
 const Navigation = (props: Props) => {
@@ -145,19 +149,21 @@ const Navigation = (props: Props) => {
               {menuItems[0].icon}
             </Link>
           </div>
-          <div className="flex items-center justify-center gap-[20px] bg-white/10 dark:bg-gray-900/30 backdrop-blur-[3px] border-b border-white/20 dark:border-gray-900/20 p-[6px_12px] rounded-full shadow-lg w-full">
-            <Link
-              href={"/projects"}
+          <Link
+            href={props.backTo?.link || "/"}
+            className="flex items-center justify-center gap-[20px] bg-white/10 dark:bg-gray-900/30 backdrop-blur-[3px] border-b border-white/20 dark:border-gray-900/20 p-[6px_12px] rounded-full shadow-lg w-full"
+          >
+            <div
               className={`flex items-center justify-center font-medium capitalize p-[4px] rounded-full text-white dark:text-black hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white gap-[10px]`}
             >
               <div className="w-[32px] h-[32px]">
                 <CircleArrowIcon className="stroke-black dark:stroke-white" />
               </div>
               <span className="text-[14px] text-black dark:text-white uppercase whitespace-nowrap">
-                Back To Projects
+                {props.backTo?.text || "Back To Projects"}
               </span>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       ) : (
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 p-[20px] overflow-hidden">
