@@ -287,6 +287,71 @@ export const DownloadIcon = ({ className, width, height }: Props) => {
     </svg>
   );
 };
+export const LocationIcon = ({
+  className,
+  strokeWidth,
+  width,
+  height,
+}: Props) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 13.43C13.7231 13.43 15.12 12.0331 15.12 10.31C15.12 8.58687 13.7231 7.19 12 7.19C10.2769 7.19 8.88 8.58687 8.88 10.31C8.88 12.0331 10.2769 13.43 12 13.43Z"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+      />
+      <path
+        d="M3.62 8.49C5.59 -0.169998 18.42 -0.159997 20.38 8.5C21.53 13.58 18.37 17.88 15.6 20.54C13.59 22.48 10.41 22.48 8.39 20.54C5.63 17.88 2.47 13.57 3.62 8.49Z"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+      />
+    </svg>
+  );
+};
+export const ArrowNextIcon = ({
+  className,
+  strokeWidth,
+  width,
+  height,
+}: Props) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.5 12H14.5"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.5 15L15.5 12L12.5 9"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
 export const EmailIcon = ({ className, strokeWidth }: Props) => {
   return (
     <svg

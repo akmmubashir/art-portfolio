@@ -18,7 +18,6 @@ interface Props {
 const InteractiveImage: React.FC<Props> = ({
   homeData = {} as HomeData["data"],
 }) => {
-  // console.log("homeData", homeData?.heroImage?.url);
   const imageRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {

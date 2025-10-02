@@ -75,8 +75,12 @@ const page = async () => {
         innerPage
         bgImage={projectsData?.data?.bannerBg?.url}
         bgImageMob={projectsData?.data?.bannerBgMob?.url}
+        backTo={{
+          link: "/projects",
+          text: "Back To Projects",
+        }}
       />
-      <div className="flex-1 flex flex-col p-[50px] max-md:p-[40px_20px_60px_20px] gap-[40px] max-w-[1440px] mx-auto">
+      <div className="flex-1 flex flex-col p-[50px] max-md:p-[40px_20px_60px_20px] gap-[40px] max-w-[1440px] mx-auto w-full">
         <div className="flex flex-col gap-[20px] max-md:gap-[10px]">
           <h2
             className="font-Gilroy font-bold text-[20px] max-md:text-[16px] leading-[20px] max-md:leading-[16px]"

@@ -8,8 +8,12 @@ interface Props {
   innerPage?: boolean;
   bgImage?: string;
   bgImageMob?: string;
+  backTo?: {
+    link: string;
+    text: string;
+  };
 }
-const Header = ({ innerPage, bgImage }: Props) => {
+const Header = ({ innerPage, bgImage, backTo }: Props) => {
   return (
     <React.Fragment>
       {!innerPage ? (
@@ -36,17 +40,17 @@ const Header = ({ innerPage, bgImage }: Props) => {
           }}
           className="bg-[#F3F3F3] dark:bg-[#000] w-full min-h-[400px] max-h-[530px]"
         >
-          <div className="bg-white/10 dark:bg-[#353535]/10 backdrop-blur-[3px] border-b border-white/20 dark:border-[#353535]/20 p-[30px_50px] max-md:p-[15px_20px] max-md:fixed max-md:w-full top-0 z-50">
+          <div className="bg-white/10 dark:bg-[#353535]/10 backdrop-blur-[3px] border-b border-white/20 dark:border-[#353535]/20 p-[30px_50px] max-md:p-[15px_20px] max-md:fixed max-md:w-full top-0 z-50 fixed w-full">
             <div className="flex justify-between items-center">
               <Link
-                href="/projects"
+                href={backTo?.link || "/"}
                 className="flex items-center gap-[10px] maxmd:gap-[5px] max-md:hidden"
               >
                 <div className="w-[40px] h-[40px]">
                   <CircleArrowIcon className="stroke-black dark:stroke-white" />
                 </div>
                 <span className="text-[14px] text-black dark:text-white uppercase whitespace-nowrap">
-                  Back To Projects
+                  {backTo?.text || "Back To Projects"}
                 </span>
               </Link>
               <Link href="/" className="w-[120px] max-md:w-[80px] md:hidden">

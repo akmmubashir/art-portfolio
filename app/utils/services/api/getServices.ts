@@ -7,6 +7,7 @@ import {
   GeneralInfo,
   HomeData,
   OriginsProjectsData,
+  ProfessionalProjectsData,
   ProjectsData,
 } from "../../types/data";
 
@@ -106,11 +107,11 @@ export async function getOriginsProjectsData(): Promise<
   }
 }
 export async function getProfessionalProjectsData(): Promise<
-  OriginsProjectsData | undefined
+  ProfessionalProjectsData | undefined
 > {
   try {
     return await getData(
-      `/professional-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[images][populate][image][fields][0]=url&populate[video][populate][video][fields][0]=url`,
+      `/professional-project?populate[ogImage][fields][0]=url&populate[bannerBg][fields][0]=url&populate[bannerBgMob][fields][0]=url&populate[companies][populate][companyImage][fields][0]=url&populate[companies][populate][bgImage][fields][0]=url&populate[companies][populate][bgMobile][fields][0]=url&populate[companies][populate][projects][populate][images][populate][image][fields][0]=url&populate[companies][populate][projects][populate][videos][populate][video][fields][0]=url`,
       60 // Revalidate every 60 seconds
     );
   } catch (error) {

@@ -1,27 +1,26 @@
 import React, { cache } from "react";
+import Image from "next/image";
 import { Metadata } from "next";
 import localFont from "next/font/local";
-import { getOriginsProjectsData } from "@/app/utils/services/api/getServices";
-import { OriginsProjectsData } from "@/app/utils/types/data";
+import { getProfessionalProjectsData } from "@/app/utils/services/api/getServices";
+import { ProfessionalProjectsData } from "@/app/utils/types/data";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import Navigation from "@/app/components/navigation";
-import ImageGrid from "../components/imageGrid";
-import VideoGrid from "../components/videoGrid";
 
 const GilroyBold = localFont({
-  src: "../../fonts/Gilroy-Bold.ttf",
+  src: "../../../fonts/Gilroy-Bold.ttf",
   variable: "--font-gilroy-bold",
 });
 const GilroyMedium = localFont({
-  src: "../../fonts/Gilroy-Medium.ttf",
+  src: "../../../fonts/Gilroy-Medium.ttf",
   variable: "--font-gilroy-medium",
 });
 
 const fetchProjectsData = cache(
-  async (): Promise<Partial<OriginsProjectsData>> => {
+  async (): Promise<Partial<ProfessionalProjectsData>> => {
     try {
-      const projectsData = await getOriginsProjectsData();
+      const projectsData = await getProfessionalProjectsData();
       return projectsData || {};
     } catch (error) {
       console.error("Error fetching projects data:", error);
@@ -67,8 +66,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
   }
 };
 
-const page = async () => {
+const page = async (props: { params: Promise<{ company: string }> }) => {
   const projectsData = await fetchProjectsData();
+  const { company } = await props.params;
+  const companies = projectsData?.data?.companies ?? [];
+
+  const companyData = companies.find(
+    (item) => item.companyName.toLowerCase().replace(" ", "-") === company
+  );
   return (
     <div className="bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
       <Header
@@ -76,35 +81,19 @@ const page = async () => {
         bgImage={projectsData?.data?.bannerBg?.url}
         bgImageMob={projectsData?.data?.bannerBgMob?.url}
         backTo={{
-          link: "/projects",
-          text: "Back To Projects",
+          link: "/projects/professional",
+          text: "Back To Professional Projects",
         }}
       />
-      <div className="flex-1 flex flex-col py-[60px] p-[50px] max-md:p-[40px_20px_60px_20px] gap-[40px] max-w-[1440px] mx-auto w-full">
+      <div className="flex flex-col py-[60px] p-[50px] max-md:p-[40px_20px_60px_20px] gap-[40px] max-w-[1440px] mx-auto w-full">
         <div className="flex flex-col gap-[20px] max-md:gap-[10px]">
-          <h2
-            className="font-Gilroy font-bold text-[20px] max-md:text-[16px] leading-[20px] max-md:leading-[16px]"
-            style={{ fontFamily: GilroyMedium.style.fontFamily }}
-          >
-            {projectsData?.data?.subHeading}
-          </h2>
           <h1
-            className="font-Gilroy font-bold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
+            className="font-Gilroy font-bold text-[40px] max-md:text-[30px] leading-[40px] max-md:leading-[30px]"
             style={{ fontFamily: GilroyBold.style.fontFamily }}
           >
-            {projectsData?.data?.heading}
+            {companyData?.companyName}
           </h1>
-          <p>{projectsData?.data?.description}</p>
-        </div>
-        <div className="flex flex-col gap-[20px] max-md:pb-[40px]">
-          <ImageGrid
-            dataList={projectsData?.data?.images || []}
-            pageTitle={projectsData?.data?.pageTitle}
-          />
-          <VideoGrid
-            dataList={projectsData?.data?.video || []}
-            pageTitle={projectsData?.data?.pageTitle}
-          />
+          <p>{companyData?.info}</p>
         </div>
       </div>
       <div className="md:hidden">

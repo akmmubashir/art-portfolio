@@ -64,8 +64,6 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const page = async () => {
   const aboutData = await fetchAboutData();
-  console.log(aboutData);
-
   return (
     <div className="md:min-h-screen bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
       <Header />
