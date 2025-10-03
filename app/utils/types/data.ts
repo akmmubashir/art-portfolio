@@ -223,7 +223,7 @@ export type ProfessionalProjectsData = {
                 image?: { url: string };
               }
             ];
-            video: [
+            videos: [
               {
                 id: number;
                 width: string;

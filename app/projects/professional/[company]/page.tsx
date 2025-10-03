@@ -9,6 +9,7 @@ import Navigation from "@/app/components/navigation";
 import { convertToSlug } from "@/app/components/commonMethod";
 import { ClockIcon, GlobeIcon, LocationIcon } from "@/app/components/icons";
 import Link from "next/link";
+import ProjectListTabs from "@/app/components/projectListTabs";
 
 const GilroyBold = localFont({
   src: "../../../fonts/Gilroy-Bold.ttf",
@@ -157,6 +158,7 @@ const page = async (props: { params: Promise<{ company: string }> }) => {
           </div>
           <p>{companyData?.info}</p>
         </div>
+        <ProjectListTabs projectData={companyData?.projects} />
       </div>
       <div className="md:hidden">
         <Navigation
