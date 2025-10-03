@@ -204,9 +204,11 @@ export type ProfessionalProjectsData = {
         location: string;
         info: string;
         website: string;
+        role: string;
         companyImage?: { url: string };
         bgImage?: { url: string };
         bgMobile?: { url: string };
+        duration?: string;
         projects: [
           {
             id: number;

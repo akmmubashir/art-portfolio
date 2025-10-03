@@ -314,6 +314,86 @@ export const LocationIcon = ({
     </svg>
   );
 };
+export const ClockIcon = ({ className, strokeWidth, width, height }: Props) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12 6V12"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.24 16.24L12 12"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+export const GlobeIcon = ({ className, strokeWidth, width, height }: Props) => {
+  return (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.00001 3H9.00001C7.05001 8.84 7.05001 15.16 9.00001 21H8.00001"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15 3C16.95 8.84 16.95 15.16 15 21"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3 16V15C8.84 16.95 15.16 16.95 21 15V16"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3 8.99998C8.84 7.04998 15.16 7.04998 21 8.99998"
+        className={className}
+        strokeWidth={strokeWidth ? strokeWidth : "1.5"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
 export const ArrowNextIcon = ({
   className,
   strokeWidth,

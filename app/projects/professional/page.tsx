@@ -8,7 +8,8 @@ import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import Navigation from "@/app/components/navigation";
 import Link from "next/link";
-import { ArrowNextIcon, LocationIcon } from "@/app/components/icons";
+import { ArrowNextIcon, ClockIcon, LocationIcon } from "@/app/components/icons";
+import { convertToSlug } from "@/app/components/commonMethod";
 // import ImageGrid from "../components/imageGrid";
 // import VideoGrid from "../components/videoGrid";
 
@@ -110,10 +111,10 @@ const page = async () => {
               {companies.map((item) => (
                 <Link
                   key={item.id}
-                  href={`/projects/professional/${item.companyName
-                    .toLowerCase()
-                    .replace(" ", "-")}`}
-                  className="col-span-4 max-md:col-span-full rounded-[20px_20px_50px_20px] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                  href={`/projects/professional/${convertToSlug(
+                    item.companyName
+                  )}`}
+                  className="group col-span-4 max-md:col-span-full rounded-[20px_20px_50px_20px] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <Image
                     src={item.companyImage?.url || ""}
@@ -141,8 +142,21 @@ const page = async () => {
                           {item.location}
                         </p>
                       </div>
+                      <div className="flex flex-wrap items-center gap-[6px]">
+                        <div>
+                          <ClockIcon
+                            className="stroke-[#000] dark:stroke-[#fff]"
+                            width="18"
+                            height="18"
+                            strokeWidth="1.2"
+                          />
+                        </div>
+                        <p className="text-[16px] max-md:text-[14px] font-medium">
+                          {item.duration}
+                        </p>
+                      </div>
                     </div>
-                    <div className="">
+                    <div className="group-hover:animate-bounce">
                       <ArrowNextIcon
                         className="stroke-[#000] dark:stroke-[#fff]"
                         strokeWidth="0.8"
