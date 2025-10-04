@@ -86,6 +86,8 @@ const page = async (props: { params: Promise<{ company: string }> }) => {
   const companyData = companies.find(
     (item) => convertToSlug(item.companyName) === company
   );
+  console.log("companyData", companyData);
+
   return (
     <div className="bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
       <Header
@@ -158,7 +160,9 @@ const page = async (props: { params: Promise<{ company: string }> }) => {
           </div>
           <p>{companyData?.info}</p>
         </div>
-        <ProjectListTabs projectData={companyData?.projects} />
+        {companyData?.projects.length ? (
+          <ProjectListTabs projectData={companyData?.projects} />
+        ) : null}
       </div>
       <div className="md:hidden">
         <Navigation
