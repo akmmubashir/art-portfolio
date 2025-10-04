@@ -97,7 +97,7 @@ const ProjectListTabs = (props: Props) => {
             alt={items[activeIndex]?.title + "image"}
             width={1000}
             height={680}
-            className="w-full h-[600px] max-md:h-[460px] object-contain"
+            className="w-full max-h-[600px] max-md:max-h-[460px] object-contain"
           />
         ) : null}
       </div>
