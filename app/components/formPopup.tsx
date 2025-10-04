@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import { ArrowIcon } from "./icons";
 import ContactForm from "./contactForm";
 
-type Props = object;
-
-const FormPopup = (_props: Props) => {
+const FormPopup: React.FC = () => {
   const [open, setOpen] = useState(false);
   return (
     <React.Fragment>

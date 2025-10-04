@@ -20,12 +20,16 @@ type Props = {
   height?: string;
 };
 
+type ArrowProps = {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
+
 const ImageSlider: React.FC<Props> = ({
   imageList = [],
   autoplayMs = 3000,
 }) => {
   // Custom Arrow components for react-slick
-  const PrevArrow = (props: any) => {
+  const PrevArrow = (props: ArrowProps) => {
     const { onClick } = props;
     return (
       <button
@@ -47,7 +51,7 @@ const ImageSlider: React.FC<Props> = ({
     );
   };
 
-  const NextArrow = (props: any) => {
+  const NextArrow = (props: ArrowProps) => {
     const { onClick } = props;
     return (
       <button

@@ -35,7 +35,7 @@ const ProjectListTabs = (props: Props) => {
 
   return (
     <div className="grid grid-cols-12 gap-[30px] relative">
-      <div className="md:max-h-[300px] max-md:h-auto col-span-3 max-md:col-span-12 flex md:flex-col gap-[10px] md:overflow-auto max-md:overflow-x-auto overflow-hidden tabs-scroll p-[0_5px_0_0] max-md:p-[8px] max-md:-mx-[10px] max-md:px-[10px] snap-x snap-mandatory sticky top-[90px] z-[1] bg-red-400">
+      <div className="md:max-h-[300px] max-md:h-auto col-span-3 max-md:col-span-12 flex md:flex-col gap-[10px] md:overflow-auto max-md:overflow-x-auto overflow-hidden tabs-scroll p-[0_5px_0_0] max-md:p-[8px] max-md:-mx-[10px] max-md:px-[10px] snap-x snap-mandatory sticky top-[90px] z-[1]">
         {items.map((item, index) => (
           <div
             key={item.id}
