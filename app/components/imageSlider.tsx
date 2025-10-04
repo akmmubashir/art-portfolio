@@ -36,7 +36,7 @@ const ImageSlider: React.FC<Props> = ({
         type="button"
         aria-label="Previous slide"
         onClick={onClick}
-        className="cursor-pointer absolute left-[30px] top-1/2 -translate-y-1/2 z-20 transition max-md:left-1 hover:animate-pulse"
+        className="cursor-pointer max-md:hidden absolute left-[30px] md:top-1/2 max-md:bottom-[10px] -translate-y-1/2 z-20 transition max-md:left-[10px] hover:animate-pulse"
       >
         {/* Rotate next icon to point left for prev */}
         <span className="block rotate-180">
@@ -58,7 +58,7 @@ const ImageSlider: React.FC<Props> = ({
         type="button"
         aria-label="Next slide"
         onClick={onClick}
-        className="cursor-pointer absolute right-[30px] top-1/2 -translate-y-1/2 z-20 transition max-md:right-1 hover:animate-pulse"
+        className="cursor-pointer max-md:hidden absolute right-[30px] md:top-1/2 max-md:bottom-[10px] -translate-y-1/2 z-20 transition max-md:right-[10px] hover:animate-pulse"
       >
         <ArrowNextIcon
           className="stroke-black dark:stroke-white"
@@ -88,7 +88,7 @@ const ImageSlider: React.FC<Props> = ({
 
   return (
     <div
-      className={`relative w-full h-[600px] max-md:h-[460px] bg-[#f1f1f1] dark:bg-[#303030] rounded-[12px] overflow-hidden shadow-xl mt-[40px]`}
+      className={`relative w-full h-[600px] max-md:h-[460px] bg-[#f1f1f1] dark:bg-[#303030] rounded-[12px] overflow-hidden shadow-xl md:mt-[40px]`}
     >
       <Slider {...settings}>
         {imageList.map((image, idx) => (
