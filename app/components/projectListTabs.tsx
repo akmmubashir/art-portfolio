@@ -32,7 +32,7 @@ type Props = {
 const ProjectListTabs = (props: Props) => {
   const items = useMemo(() => props.projectData ?? [], [props.projectData]);
   const [activeIndex, setActiveIndex] = useState(0);
-  console.log(items[activeIndex]?.videos);
+  // console.log(items[activeIndex]?.videos);
   const rootRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 

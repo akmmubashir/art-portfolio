@@ -10,6 +10,8 @@ import Navigation from "@/app/components/navigation";
 import Link from "next/link";
 import { ArrowNextIcon, ClockIcon, LocationIcon } from "@/app/components/icons";
 import { convertToSlug } from "@/app/components/commonMethod";
+import CompanyProjectList from "../components/companyProjectList";
+import { div } from "motion/react-client";
 // import ImageGrid from "../components/imageGrid";
 // import VideoGrid from "../components/videoGrid";
 
@@ -80,34 +82,46 @@ const page = async () => {
     <div className="bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
       <Header
         innerPage
-        bgImage={projectsData?.data?.bannerBg?.url}
-        bgImageMob={projectsData?.data?.bannerBgMob?.url}
+        bgImage={
+          companies.length === 1
+            ? companies[0].bgImage?.url
+            : projectsData?.data?.bannerBg?.url
+        }
+        bgImageMob={
+          companies.length === 1
+            ? companies[0].bgMobile?.url
+            : projectsData?.data?.bannerBgMob?.url
+        }
         backTo={{
           link: "/projects",
           text: "Back To Projects",
         }}
       />
-      <div className="flex-1 flex flex-col py-[60px] p-[50px] max-md:p-[40px_20px_60px_20px] gap-[40px] max-w-[1440px] mx-auto w-full">
-        <div className="flex flex-col gap-[20px] max-md:gap-[10px]">
-          <h2
-            className="font-Gilroy font-bold text-[20px] max-md:text-[16px] leading-[20px] max-md:leading-[16px]"
-            style={{ fontFamily: GilroyMedium.style.fontFamily }}
-          >
-            {projectsData?.data?.subHeading}
-          </h2>
-          <h1
-            className="font-Gilroy font-bold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
-            style={{ fontFamily: GilroyBold.style.fontFamily }}
-          >
-            {projectsData?.data?.heading || "Default Heading"}
-          </h1>
-          <p>{projectsData?.data?.description || "Default Description"}</p>
-        </div>
-        <div className="max-md:pb-[40px] grid grid-cols-12 gap-[30px]">
-          {companies.length <= 1 ? (
-            <p>1 company found</p>
-          ) : (
-            <>
+      {companies.length === 1 ? (
+        companies[0] ? (
+          <div className="col-span-12">
+            <CompanyProjectList companyData={companies[0]} />
+          </div>
+        ) : null
+      ) : (
+        <React.Fragment>
+          <div className="flex-1 flex flex-col py-[60px] p-[50px] max-md:p-[40px_20px_60px_20px] gap-[40px] max-w-[1440px] mx-auto w-full">
+            <div className="flex flex-col gap-[20px] max-md:gap-[10px]">
+              <h2
+                className="font-Gilroy font-bold text-[20px] max-md:text-[16px] leading-[20px] max-md:leading-[16px]"
+                style={{ fontFamily: GilroyMedium.style.fontFamily }}
+              >
+                {projectsData?.data?.subHeading}
+              </h2>
+              <h1
+                className="font-Gilroy font-bold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
+                style={{ fontFamily: GilroyBold.style.fontFamily }}
+              >
+                {projectsData?.data?.heading || "Default Heading"}
+              </h1>
+              <p>{projectsData?.data?.description || "Default Description"}</p>
+            </div>
+            <div className="max-md:pb-[40px] grid grid-cols-12 gap-[30px]">
               {companies.map((item) => (
                 <Link
                   key={item.id}
@@ -167,10 +181,10 @@ const page = async () => {
                   </div>
                 </Link>
               ))}
-            </>
-          )}
-        </div>
-      </div>
+            </div>
+          </div>
+        </React.Fragment>
+      )}
       <div className="md:hidden">
         <Navigation
           project
