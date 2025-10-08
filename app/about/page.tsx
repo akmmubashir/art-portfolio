@@ -1,19 +1,11 @@
 import React, { cache } from "react";
 import { Metadata } from "next";
-import Image from "next/image";
-import localFont from "next/font/local";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import Navigation from "../components/navigation";
 // import { DownloadIcon } from "../components/icons";
 import { getAboutData } from "../utils/services/api/getServices";
 import { AboutData } from "../utils/types/data";
-import ResumeDownload from "./components/resumeDownload";
-
-const GilroyBold = localFont({
-  src: "../fonts/Gilroy-Bold.ttf",
-  variable: "--font-gilroy-bold",
-});
+import AboutSection from "./components/aboutSection";
 
 const fetchAboutData = cache(async (): Promise<Partial<AboutData>> => {
   try {
@@ -68,35 +60,7 @@ const page = async () => {
     <div className="md:min-h-screen bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
       <Header />
       <div className="flex-1 flex flex-col p-[30px_50px_30px_50px] max-md:p-[20px_20px_50px_20px]">
-        <div className="grid grid-cols-12 gap-[100px] max-md:gap-[20px_0] flex-1 items-center">
-          <div className="col-span-3 max-md:col-span-full">
-            <Image
-              src={
-                aboutData?.data?.aboutImage?.url ||
-                "/assets/common/aboutImage.png"
-              }
-              alt="aboutImage"
-              width={1000}
-              height={1000}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="col-span-9 max-md:col-span-full flex flex-col gap-[40px] max-md:gap-[10px_0]">
-            <h1
-              className="font-Gilroy font-bold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
-              style={{ fontFamily: GilroyBold.style.fontFamily }}
-            >
-              {aboutData?.data?.heading || "Default Heading"}
-            </h1>
-            <p className="text-[#52575E] dark:text-white text-[20px] max-md:text-[14px] text-justify">
-              {aboutData?.data?.description || "Default Description"}
-            </p>
-            <ResumeDownload resume={aboutData?.data?.resume} />
-          </div>
-        </div>
-        <div className="mt-auto mx-auto">
-          <Navigation />
-        </div>
+        <AboutSection aboutData={aboutData?.data} />
       </div>
       <Footer />
     </div>

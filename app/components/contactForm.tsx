@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const ContactForm = ({ closePopup }: { closePopup?: () => void }) => {
   const [name, setName] = useState("");
@@ -94,7 +95,15 @@ const ContactForm = ({ closePopup }: { closePopup?: () => void }) => {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col">
-      <div className="flex flex-col">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.5,
+          ease: "easeOut",
+        }}
+        className="flex flex-col"
+      >
         <input
           type="text"
           placeholder="Name"
@@ -106,9 +115,17 @@ const ContactForm = ({ closePopup }: { closePopup?: () => void }) => {
         <p className="h-[30px] flex items-center text-red-400 text-[16px] max-md:text-[14px]">
           {errors.name ? errors.name : null}
         </p>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-col">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.7,
+          ease: "easeOut",
+        }}
+        className="flex flex-col"
+      >
         <input
           type="text"
           placeholder="E-Mail"
@@ -119,9 +136,17 @@ const ContactForm = ({ closePopup }: { closePopup?: () => void }) => {
         <p className="h-[30px] flex items-center text-red-400 text-[16px] max-md:text-[14px]">
           {errors.email ? errors.email : null}
         </p>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-col">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.9,
+          ease: "easeOut",
+        }}
+        className="flex flex-col"
+      >
         <textarea
           placeholder="Type your message here"
           rows={5}
@@ -132,7 +157,7 @@ const ContactForm = ({ closePopup }: { closePopup?: () => void }) => {
         <p className="h-[30px] flex items-center text-red-400 text-[16px] max-md:text-[14px]">
           {errors.message ? errors.message : null}
         </p>
-      </div>
+      </motion.div>
       {submitStatus && (
         <div
           className={`mb-4 p-3 rounded ${
@@ -144,7 +169,15 @@ const ContactForm = ({ closePopup }: { closePopup?: () => void }) => {
           {submitStatus.message}
         </div>
       )}
-      <div className={`flex gap-[20px] mt-[10px]`}>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 1.1,
+          ease: "easeOut",
+        }}
+        className={`flex gap-[20px] mt-[10px]`}
+      >
         <button
           type="submit"
           disabled={isLoading}
@@ -165,7 +198,7 @@ const ContactForm = ({ closePopup }: { closePopup?: () => void }) => {
             Close
           </button>
         ) : null}
-      </div>
+      </motion.div>
     </form>
   );
 };

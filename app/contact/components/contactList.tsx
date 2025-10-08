@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
+// import Link from "next/link";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 
@@ -44,7 +45,7 @@ const ContactList: React.FC<ContactListProps> = ({ contactData }) => {
 
   return (
     <div className="flex gap-[20px]">
-      {contactData.data.social.map((item: SocialItem) => {
+      {contactData.data.social.map((item: SocialItem, index: number) => {
         const iconUrl =
           theme === "dark" ? item.nightIcon?.url : item.dayIcon?.url;
         const altText = `${item.name} icon`;
@@ -52,12 +53,22 @@ const ContactList: React.FC<ContactListProps> = ({ contactData }) => {
         if (!iconUrl) return null;
 
         return (
-          <Link
+          <motion.a
             key={item.id}
             href={item.link}
             className="cursor-pointer flex items-center justify-center w-[40px] aspect-square rounded-full bg-black dark:bg-white hover:bg-[#464646] dark:hover:bg-[#f1f1f1] text-white dark:text-black hover:text-white dark:hover:text-white p-[8px]"
             target="_blank"
             rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1,
+              delay: index * 0.2,
+              ease: "easeOut",
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+            }}
           >
             <Image
               src={iconUrl}
@@ -67,7 +78,7 @@ const ContactList: React.FC<ContactListProps> = ({ contactData }) => {
               className="w-full h-auto"
               priority
             />
-          </Link>
+          </motion.a>
         );
       })}
     </div>

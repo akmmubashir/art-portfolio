@@ -88,8 +88,14 @@ const Navigation = (props: Props) => {
               isMounted && pathname === item.href ? (
                 <motion.div
                   animate={{ x: [-100, 0] }}
-                  transition={{ duration: 1 }}
                   whileHover={{ scale: 1.1 }}
+                  transition={{
+                    duration: 1,
+                    ease: "easeOut",
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10,
+                  }}
                   className="w-[60px] aspect-square rounded-full border flex items-center justify-center"
                 >
                   {item.icon}
@@ -98,7 +104,13 @@ const Navigation = (props: Props) => {
                 <motion.a
                   href={`${item.href}`}
                   animate={{ y: [100, 0] }}
-                  transition={{ duration: 1 }}
+                  transition={{
+                    duration: 1,
+                    ease: "easeOut",
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 10,
+                  }}
                   whileHover={{ scale: 1.1 }}
                   className="text-[22px] max-md:text-[18px] font-medium text-black dark:text-white hover:underline underline-offset-4 lowercase"
                 >

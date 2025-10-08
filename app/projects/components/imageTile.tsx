@@ -17,11 +17,12 @@ const ImageTile = (props: ImageTileProps) => {
   const { project } = props;
   return (
     <motion.div
-      animate={{ y: [100, 0] }}
+      initial={{ y: 100 }}
+      whileInView={{ y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5 }}
       whileHover={{ scale: 1.01 }}
       whileTap={{ scale: 0.95 }}
-      whileInView={{ y: [100, 0] }}
       className={`${
         project.width === "Full Width" ? "col-span-full" : "col-span-6"
       } max-md:col-span-full w-full h-full flex justify-center items-center`}

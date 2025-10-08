@@ -16,9 +16,10 @@ const VideoTile = (props: VideoTileProps) => {
   const { project } = props;
   return (
     <motion.div
-      animate={{ y: [100, 0] }}
+      animate={{ y: 100 }}
       transition={{ duration: 0.5 }}
-      whileInView={{ y: [100, 0] }}
+      whileInView={{ y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
       className={`${
         project.width === "Full Width" ? "col-span-full" : "col-span-6"
       } max-md:col-span-full w-full h-full flex justify-center items-center`}
