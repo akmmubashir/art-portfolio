@@ -24,6 +24,9 @@ const ProjectsContentSection = (props: Props) => {
         transition={{
           duration: 0.8,
           ease: "easeOut",
+          type: "spring",
+          stiffness: 100,
+          damping: 10,
         }}
         className="font-Gilroy font-bold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
         style={{ fontFamily: GilroyBold.style.fontFamily }}
@@ -36,6 +39,9 @@ const ProjectsContentSection = (props: Props) => {
         transition={{
           duration: 0.8,
           ease: "easeOut",
+          type: "spring",
+          stiffness: 100,
+          damping: 10,
         }}
         className="max-md:hidden"
       >

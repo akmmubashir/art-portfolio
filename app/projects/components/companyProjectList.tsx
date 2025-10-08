@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import localFont from "next/font/local";
 import ProjectListTabs from "@/app/components/projectListTabs";
 import { ClockIcon, GlobeIcon, LocationIcon } from "@/app/components/icons";
@@ -56,20 +58,49 @@ const CompanyProjectList = (props: Props) => {
   return (
     <div className="flex flex-col py-[60px] p-[50px] max-md:p-[40px_20px_60px_20px] gap-[40px] max-w-[1440px] mx-auto w-full">
       <div className="flex flex-col gap-[20px] max-md:gap-[10px]">
-        <h2
+        <motion.h2
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.5,
+            ease: "easeOut",
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+          }}
           className="font-Gilroy font-bold text-[20px] max-md:text-[16px] leading-[20px] max-md:leading-[16px]"
           style={{ fontFamily: GilroyMedium.style.fontFamily }}
         >
           {companyData?.role || "Default Heading"}
-        </h2>
-        <h1
+        </motion.h2>
+        <motion.h1
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.5,
+            ease: "easeOut",
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+          }}
           className="font-Gilroy font-bold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
           style={{ fontFamily: GilroyBold.style.fontFamily }}
         >
           {companyData?.companyName || "Default Heading"}
-        </h1>
+        </motion.h1>
         <div className="flex flex-wrap items-center gap-[10px_20px]">
-          <div className="flex flex-wrap items-center gap-[6px]">
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+              type: "tween",
+              stiffness: 100,
+              damping: 10,
+            }}
+            className="flex flex-wrap items-center gap-[6px]"
+          >
             <div>
               <LocationIcon
                 className="stroke-[#000] dark:stroke-[#fff]"
@@ -81,8 +112,19 @@ const CompanyProjectList = (props: Props) => {
             <p className="text-[16px] max-md:text-[14px] font-medium text-[#2a2a2a] dark:text-[#fff]">
               {companyData?.location || "Default Location"}
             </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-[6px]">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+              type: "tween",
+              stiffness: 100,
+              damping: 10,
+            }}
+            className="flex flex-wrap items-center gap-[6px]"
+          >
             <div>
               <ClockIcon
                 className="stroke-[#000] dark:stroke-[#fff]"
@@ -94,8 +136,19 @@ const CompanyProjectList = (props: Props) => {
             <p className="text-[16px] max-md:text-[14px] font-medium text-[#2a2a2a] dark:text-[#fff]">
               {companyData?.duration || "Default Duration"}
             </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-[6px]">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 1.1,
+              ease: "easeOut",
+              type: "tween",
+              stiffness: 100,
+              damping: 10,
+            }}
+            className="flex flex-wrap items-center gap-[6px]"
+          >
             <div>
               <GlobeIcon
                 className="stroke-[#000] dark:stroke-[#fff]"
@@ -111,9 +164,21 @@ const CompanyProjectList = (props: Props) => {
             >
               {companyData?.website || "Default Website"}
             </Link>
-          </div>
+          </motion.div>
         </div>
-        <p>{companyData?.info}</p>
+        <motion.p
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.5,
+            ease: "easeOut",
+            type: "spring",
+            stiffness: 100,
+            damping: 10,
+          }}
+        >
+          {companyData?.info}
+        </motion.p>
       </div>
       {companyData?.projects?.length ? (
         <ProjectListTabs projectData={companyData?.projects} />

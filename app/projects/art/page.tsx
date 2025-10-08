@@ -8,6 +8,7 @@ import Footer from "@/app/components/footer";
 import Navigation from "@/app/components/navigation";
 import ImageGrid from "../components/imageGrid";
 import VideoGrid from "../components/videoGrid";
+import ArtProject from "../components/artProject";
 
 const GilroyBold = localFont({
   src: "../../fonts/Gilroy-Bold.ttf",
@@ -78,33 +79,7 @@ const page = async () => {
           text: "Back To Projects",
         }}
       />
-      <div className="flex-1 flex flex-col p-[50px] max-md:p-[40px_20px_60px_20px] gap-[40px] max-w-[1440px] mx-auto w-full">
-        <div className="flex flex-col gap-[20px] max-md:gap-[10px]">
-          <h2
-            className="font-Gilroy font-bold text-[20px] max-md:text-[16px] leading-[20px] max-md:leading-[16px]"
-            style={{ fontFamily: GilroyMedium.style.fontFamily }}
-          >
-            {projectsData?.data?.subHeading}
-          </h2>
-          <h1
-            className="font-Gilroy font-bold text-[60px] max-md:text-[30px] leading-[60px] max-md:leading-[32px]"
-            style={{ fontFamily: GilroyBold.style.fontFamily }}
-          >
-            {projectsData?.data?.heading}
-          </h1>
-          <p>{projectsData?.data?.description}</p>
-        </div>
-        <div className="flex flex-col gap-[20px] max-md:pb-[40px]">
-          <ImageGrid
-            dataList={projectsData?.data?.images || []}
-            pageTitle={projectsData?.data?.pageTitle}
-          />
-          <VideoGrid
-            dataList={projectsData?.data?.video || []}
-            pageTitle={projectsData?.data?.pageTitle}
-          />
-        </div>
-      </div>
+      <ArtProject projectsData={projectsData?.data} />
       <div className="md:hidden">
         <Navigation
           project

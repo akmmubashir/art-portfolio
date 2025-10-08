@@ -59,7 +59,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const page = async () => {
   const projectsData = await fetchProjectsData();
   return (
-    <div className="md:h-screen bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#353535] flex flex-col md:overflow-hidden">
       <Header />
       <div className="flex-1 flex flex-col p-[30px_50px] max-md:p-[20px_20px_50px_20px]">
         <ProjectsContentSection projectsData={projectsData?.data} />

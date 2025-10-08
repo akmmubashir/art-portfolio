@@ -92,11 +92,14 @@ const WorksGrid = (props: Props) => {
             </div>
           </div>
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.5, y: 100 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{
               duration: 0.5,
               ease: "easeOut",
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
             }}
             className={`w-[350px] aspect-square flex justify-center items-center absolute bottom-[-140px]  transition-transform duration-300
               hover:-translate-y-5 max-md:hidden 
