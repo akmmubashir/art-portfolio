@@ -78,10 +78,13 @@ const AboutSection = (props: Props) => {
           stiffness: 100,
           damping: 10,
         }}
-        className="mt-auto mx-auto"
+        className="mt-auto mx-auto max-md:hidden"
       >
         <Navigation />
       </motion.div>
+      <div className="mt-auto mx-auto md:hidden">
+        <Navigation />
+      </div>
     </React.Fragment>
   );
 };

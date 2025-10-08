@@ -37,9 +37,13 @@ const ProjectsContentSection = (props: Props) => {
           duration: 0.8,
           ease: "easeOut",
         }}
+        className="max-md:hidden"
       >
         <Navigation beta />
       </motion.div>
+      <div className="md:hidden">
+        <Navigation beta />
+      </div>
     </div>
   );
 };
