@@ -76,7 +76,8 @@ const ContactList: React.FC<ContactListProps> = ({ contactData }) => {
               width={40}
               height={40}
               className="w-full h-auto"
-              priority
+              // priority
+              loading="eager"
             />
           </motion.a>
         );

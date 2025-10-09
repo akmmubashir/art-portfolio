@@ -34,6 +34,7 @@ const ImageTile = (props: ImageTileProps) => {
           width={1000}
           height={1000}
           className="w-full h-auto object-cover"
+          loading="lazy"
         />
       ) : (
         <div className="w-full h-64 bg-gray-100 flex items-center justify-center">

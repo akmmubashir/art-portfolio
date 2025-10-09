@@ -137,6 +137,7 @@ const ProjectListTabs = (props: Props) => {
             width={1000}
             height={680}
             className="w-full max-h-[600px] max-md:max-h-[460px] object-contain"
+            loading="lazy"
           />
         ) : null}
       </motion.div>

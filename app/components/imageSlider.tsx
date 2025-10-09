@@ -99,6 +99,7 @@ const ImageSlider: React.FC<Props> = ({
               width={1000}
               height={680}
               className="w-full h-[600px] max-md:h-[460px] object-contain"
+              loading="lazy"
             />
           </div>
         ))}

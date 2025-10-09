@@ -77,6 +77,7 @@ const WorksGrid = (props: Props) => {
                 height={1000}
                 className="w-full h-full object-cover"
                 priority
+                // loading="lazy"
               />
             </div>
           </motion.div>
@@ -88,6 +89,7 @@ const WorksGrid = (props: Props) => {
                 width={1000}
                 height={1000}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           </div>
@@ -111,6 +113,7 @@ const WorksGrid = (props: Props) => {
               width={500}
               height={500}
               className="w-full h-full object-contain"
+              loading="lazy"
             />
           </motion.div>
           <motion.div
@@ -129,6 +132,7 @@ const WorksGrid = (props: Props) => {
               height={500}
               className="w-full h-full object-cover"
               priority
+              // loading="lazy"
             />
           </motion.div>
         </Link>

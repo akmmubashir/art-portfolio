@@ -138,6 +138,7 @@ const ProfessionalProject = (props: Props) => {
                 }-company-image`}
                 width={500}
                 height={500}
+                loading="lazy"
               />
               <div className="p-[15px_20px] flex justify-between items-center gap-[6px]">
                 <div className="flex flex-col gap-[6px]">

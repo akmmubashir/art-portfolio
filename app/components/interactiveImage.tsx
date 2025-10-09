@@ -119,7 +119,8 @@ const InteractiveImage: React.FC<Props> = ({
               alt="heroImage"
               width={2000}
               height={2000}
-              priority
+              // priority
+              loading="lazy"
             />
           </div>
         </motion.div>
@@ -142,6 +143,7 @@ const InteractiveImage: React.FC<Props> = ({
               className="w-full h-full object-contain"
               width={100}
               height={100}
+              loading="lazy"
             />
           </div>
           <div className="w-[50px] max-md:w-[30px]">
@@ -151,6 +153,7 @@ const InteractiveImage: React.FC<Props> = ({
               className="w-full h-full object-contain"
               width={500}
               height={500}
+              loading="lazy"
             />
           </div>
         </div>
