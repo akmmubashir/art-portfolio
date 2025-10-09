@@ -1,23 +1,11 @@
 import React, { cache } from "react";
 import { Metadata } from "next";
-import localFont from "next/font/local";
 import { getArtProjectsData } from "@/app/utils/services/api/getServices";
 import { ArtProjectsData } from "@/app/utils/types/data";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import Navigation from "@/app/components/navigation";
-import ImageGrid from "../components/imageGrid";
-import VideoGrid from "../components/videoGrid";
 import ArtProject from "../components/artProject";
-
-const GilroyBold = localFont({
-  src: "../../fonts/Gilroy-Bold.ttf",
-  variable: "--font-gilroy-bold",
-});
-const GilroyMedium = localFont({
-  src: "../../fonts/Gilroy-Medium.ttf",
-  variable: "--font-gilroy-medium",
-});
 
 const fetchProjectsData = cache(async (): Promise<Partial<ArtProjectsData>> => {
   try {
@@ -43,8 +31,15 @@ export const generateMetadata = async (): Promise<Metadata> => {
     const ogImage = projectsData?.data?.ogImage?.url || defaultImage;
 
     return {
+      metadataBase: new URL(
+        process.env.NEXT_PUBLIC_BASE_DOMAIN ||
+          "https://www.sachithearchitect.com"
+      ),
       title,
       description,
+      alternates: {
+        canonical: process.env.NEXT_PUBLIC_BASE_DOMAIN + "/projects/art",
+      },
       openGraph: {
         title: ogTitle,
         description: ogDescription,
@@ -62,6 +57,15 @@ export const generateMetadata = async (): Promise<Metadata> => {
     return {
       title: "Projects",
       description: "Projects Description",
+      alternates: {
+        canonical: process.env.NEXT_PUBLIC_BASE_DOMAIN + "/projects/art",
+      },
+      openGraph: {
+        title: "Projects",
+        description: "Projects Description",
+        locale: "en",
+        images: [{ url: "/assets/common/heroImage.png", alt: "Projects" }],
+      },
     };
   }
 };

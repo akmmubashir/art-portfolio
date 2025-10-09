@@ -1,8 +1,6 @@
 import React, { cache } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import localFont from "next/font/local";
-import Navigation from "../components/navigation";
 import WorksGrid from "./components/workGrid";
 import { Metadata } from "next";
 import { getProjectsData } from "../utils/services/api/getServices";
@@ -33,8 +31,15 @@ export const generateMetadata = async (): Promise<Metadata> => {
     const ogImage = projectsData?.data?.ogImage?.url || defaultImage;
 
     return {
+      metadataBase: new URL(
+        process.env.NEXT_PUBLIC_BASE_DOMAIN ||
+          "https://www.sachithearchitect.com"
+      ),
       title,
       description,
+      alternates: {
+        canonical: process.env.NEXT_PUBLIC_BASE_DOMAIN + "/projects",
+      },
       openGraph: {
         title: ogTitle,
         description: ogDescription,
@@ -52,6 +57,15 @@ export const generateMetadata = async (): Promise<Metadata> => {
     return {
       title: "Projects",
       description: "Projects Description",
+      alternates: {
+        canonical: process.env.NEXT_PUBLIC_BASE_DOMAIN + "/projects",
+      },
+      openGraph: {
+        title: "Projects",
+        description: "Projects Description",
+        locale: "en",
+        images: [{ url: "/assets/common/heroImage.png", alt: "Projects" }],
+      },
     };
   }
 };

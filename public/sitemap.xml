@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://www.sachithearchitect.com</loc>
+        <lastmod>2025-10-09</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://www.sachithearchitect.com/about</loc>
+        <lastmod>2025-10-09</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.sachithearchitect.com/contact</loc>
+        <lastmod>2025-10-09</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.sachithearchitect.com/projects</loc>
+        <lastmod>2025-10-09</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.sachithearchitect.com/projects/academic</loc>
+        <lastmod>2025-10-09</lastmod>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.sachithearchitect.com/projects/professional</loc>
+        <lastmod>2025-10-09</lastmod>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://www.sachithearchitect.com/projects/origins</loc>
+        <lastmod>2025-10-09</lastmod>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://www.sachithearchitect.com/projects/art</loc>
+        <lastmod>2025-10-09</lastmod>
+        <priority>0.8</priority>
+    </url>
+</urlset>

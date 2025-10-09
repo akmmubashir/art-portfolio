@@ -30,8 +30,15 @@ export const generateMetadata = async (): Promise<Metadata> => {
     const ogImage = contactData?.data?.ogImage?.url || defaultImage;
 
     return {
+      metadataBase: new URL(
+        process.env.NEXT_PUBLIC_BASE_DOMAIN ||
+          "https://www.sachithearchitect.com"
+      ),
       title,
       description,
+      alternates: {
+        canonical: process.env.NEXT_PUBLIC_BASE_DOMAIN + "/contact",
+      },
       openGraph: {
         title: ogTitle,
         description: ogDescription,
@@ -49,6 +56,15 @@ export const generateMetadata = async (): Promise<Metadata> => {
     return {
       title: "Contact",
       description: "Contact Description",
+      alternates: {
+        canonical: process.env.NEXT_PUBLIC_BASE_DOMAIN + "/contact",
+      },
+      openGraph: {
+        title: "Contact",
+        description: "Contact Description",
+        locale: "en",
+        images: [{ url: "/assets/common/heroImage.png", alt: "Contact" }],
+      },
     };
   }
 };

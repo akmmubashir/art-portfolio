@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block sensitive or irrelevant folders
+Disallow: /api/
+Disallow: /private/
+Disallow: /admin/
+
+Sitemap: /sitemap.xml

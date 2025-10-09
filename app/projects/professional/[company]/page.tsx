@@ -1,25 +1,12 @@
 import React, { cache } from "react";
 import { Metadata } from "next";
-// import localFont from "next/font/local";
 import { getProfessionalProjectsData } from "@/app/utils/services/api/getServices";
 import { ProfessionalProjectsData } from "@/app/utils/types/data";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import Navigation from "@/app/components/navigation";
 import { convertToSlug } from "@/app/components/commonMethod";
-// import { ClockIcon, GlobeIcon, LocationIcon } from "@/app/components/icons";
-// import Link from "next/link";
-// import ProjectListTabs from "@/app/components/projectListTabs";
 import CompanyProjectList from "../../components/companyProjectList";
-
-// const GilroyBold = localFont({
-//   src: "../../../fonts/Gilroy-Bold.ttf",
-//   variable: "--font-gilroy-bold",
-// });
-// const GilroyMedium = localFont({
-//   src: "../../../fonts/Gilroy-Medium.ttf",
-//   variable: "--font-gilroy-medium",
-// });
 
 const fetchProjectsData = cache(
   async (): Promise<Partial<ProfessionalProjectsData>> => {
@@ -56,8 +43,18 @@ export const generateMetadata = async (props: {
     const ogImage = companyData?.companyImage?.url || defaultImage;
 
     return {
+      metadataBase: new URL(
+        process.env.NEXT_PUBLIC_BASE_DOMAIN ||
+          "https://www.sachithearchitect.com"
+      ),
       title,
       description,
+      alternates: {
+        canonical:
+          process.env.NEXT_PUBLIC_BASE_DOMAIN +
+          "/projects/professional/" +
+          convertToSlug(companyData?.companyName || ""),
+      },
       openGraph: {
         title: ogTitle,
         description: ogDescription,
@@ -75,6 +72,17 @@ export const generateMetadata = async (props: {
     return {
       title: "Projects",
       description: "Projects Description",
+      alternates: {
+        canonical:
+          process.env.NEXT_PUBLIC_BASE_DOMAIN +
+          "/projects/professional/comapany-name",
+      },
+      openGraph: {
+        title: "Projects",
+        description: "Projects Description",
+        locale: "en",
+        images: [{ url: "/assets/common/heroImage.png", alt: "Projects" }],
+      },
     };
   }
 };
